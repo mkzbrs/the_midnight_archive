@@ -1,6 +1,6 @@
-# 🕰️ The Midnight Archive: A Problem-Solving Visual Novel
+# 🕰️ The Midnight Archive
 
-**Course:** STTHK2123 Interaction System and Tools (Session A252)
+**Course:** STTHK2123 Interaction System and Tools (Session A252) 
 **Instructor:** Dr. Nurul Izzah Binti Abdul Aziz 
 **Engine:** Ren'Py Visual Novel Engine 
 
@@ -99,6 +99,50 @@ The game is built with a simple, clean simulation interface.
 
 ---
 
+**Khuzaimi (Lead Developer)**
+Your main job is to put the game together in Ren'Py and make sure it actually runs.
+
+* Week 1 (Phase 1): Set up the GitHub repository.
+* Weeks 8–10 (Phase 2): * Write the Ren'Py code to make the game start at the library.
+* Code the conversation menu so the player can choose answers when talking to Aura.
+* Code the "Imperfect Memory" time-loop: Make the game restart if the player chooses the wrong answer.
+* Weeks 13–14 (Phase 3): * Put Adam's art and Dany's writing into the game.
+* Code the final puzzles (like making the constellation puzzle clickable).
+* Build the final game file (.exe / .app) so the lecturer can play it.
+
+**Adam (UI/UX Designer)**
+Your main job is to create how the game looks and how the player clicks on things.
+
+* Week 1 (Phase 1): Sketch out a simple, clean interface. Decide where the text box goes and what the buttons look like.
+* Weeks 8–10 (Phase 2): * Draw the Fast-Travel Map screen showing the Courtyard, Cafe, and Playground.
+* Find or draw the background image for the Library and the character art for Aura using Ibis Paint.
+* Design a simple "Inventory" button so players can see the clues they collect.
+* Weeks 13–14 (Phase 3): * Create the visual effects, like the "shattered glass" screen effect when the player fails and time resets.
+* Create the glowing effect for the "Lost Record" book at the end of the game.
+
+**Dany (Lead Writer)**
+Your main job is to write everything the characters say and the clues the player finds.
+
+* Week 1 (Phase 1): Write a short summary of what happens in each of the 7 scenes.
+* Weeks 8–10 (Phase 2): * Write the exact script for Alice waking up at 00:00.
+* Write the first conversation between Alice and Aura. You must write both the "correct" choices and the "wrong" choices that cause the game to restart.
+* Write the text for the first hidden clue (the torn astronomy page).
+* Weeks 13–14 (Phase 3): * Write the riddles for the History puzzle and the Timeline puzzle.
+* Write the final ending conversation where Aura says goodbye and Alice wakes up in the real world.
+
+**Hazri (QA Tester & Evaluator)**
+Your main job is to play the game, find bugs, and write the final testing report for the class.
+
+* Week 1 (Phase 1): Read through the project proposal and double-check that the 9 Usability Questions make sense before handing it in.
+* Weeks 8–10 (Phase 2): * Play first version of the game.
+* Click every wrong answer on purpose to make sure the game successfully restarts.
+* Tell Adam if the map buttons are too small or confusing.
+* Weeks 13–14 (Phase 3): * Give the finished game to 3-5 friends outside the group to play.
+* Ask them to fill out the System Usability Scale (SUS) survey.
+* Write the "Findings and Discussion" and "Limitations" sections of the final report based on what those testers said.
+
+---
+
 ## 📊 8. Evaluation Plan
 
 To prove the game is successful, the team will test the final prototype using two methods:
@@ -111,19 +155,46 @@ To prove the game is successful, the team will test the final prototype using tw
 
 To edit the game, you need to download the files from this page to your computer, make your changes, and send them back.
 
-### Step 1: Downloading the Game (First Time Only)
-1. Download and install **GitHub Desktop**.
-2. Sign in with your GitHub account.
-3. Click on **File > Clone Repository**.
-4. Click the **URL** tab and paste the link to this project page.
-5. Choose a folder on your computer to save it, and click **Clone**.
+## 💻 How to Work on This Project (Terminal Guide)
 
-### Step 2: Opening the Game in Ren'Py
-1. Open your **Ren'Py Launcher**.
-2. Click **Preferences > Projects Directory**.
-3. Select the folder where you saved the GitHub files in Step 1.
-4. "Midnight Archive" will now appear in your Ren'Py menu. Click it to launch or edit the game!
+To keep the game from breaking, **no one should make changes directly to the `main` branch.** Everyone will create their own branch, do their work there, and then ask for it to be merged into the main game.
 
-### Step 3: Getting Updates & Saving Your Work (Do This Every Time)
-* **BEFORE you start working:** Open GitHub Desktop and click the **Fetch Origin** (or **Pull Origin**) button at the top. This downloads any new code Khuzaimi has written so you don't break the game.
-* **AFTER you finish working:** In GitHub Desktop, type a short message in the bottom left corner explaining what you added (e.g., "Added dialogue for Scene 2"), click **Commit to main**, and then click **Push Origin** to upload your work to the internet.
+**Step 1: First-Time Setup (Downloading the Game)**
+If you haven't downloaded the game yet, open your terminal and run:
+```bash
+git clone [https://github.com/mkzbrs/the_midnight_archive.git](https://github.com/mkzbrs/the_midnight_archive.git)
+cd the_midnight_archive
+```
+
+**Step 2: Before You Start Working (Getting Updates)**
+Always do this so you have the newest code before making any changes:
+```bash
+git checkout main
+git pull origin main
+```
+
+**Step 3: Creating Your Own Branch**
+Never work directly on main. Create a safe workspace using your name and task:
+```bash
+# Example: git checkout -b adam-map-ui
+git checkout -b <your-name>-<your-task>
+```
+
+**Step 4: Saving Your Work**
+After making your edits in Ren'Py, save your work and upload it to GitHub:
+```bash
+# 1. Add all the files you changed
+git add .
+# 2. Add a short message explaining what you did
+git commit -m "Finished the Courtyard map"
+# 3. Upload your branch to GitHub
+git push origin <your-branch-name>
+```
+
+**Step 5: Sending Your Work to the Main Game (Pull Request)**
+When your task is completely done and you want Khuzaimi to add it to the final game:
+
+1. Go to the project page on the GitHub website.
+2. You will see a green Compare & pull request button for your newly pushed branch. Click it.
+3. Click Create Pull Request.
+4. Khuzaimi will review your code. If it looks good, he will merge it into the main game!
