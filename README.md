@@ -103,10 +103,10 @@ The game is built with a simple, clean simulation interface.
 Your main job is to put the game together in Ren'Py and make sure it actually runs.
 
 * Week 1 (Phase 1): Set up the GitHub repository.
-* Weeks 8–10 (Phase 2): * Write the Ren'Py code to make the game start at the library.
+* Weeks 8–10 (Phase 2): Write the Ren'Py code to make the game start at the library.
 * Code the conversation menu so the player can choose answers when talking to Aura.
 * Code the "Imperfect Memory" time-loop: Make the game restart if the player chooses the wrong answer.
-* Weeks 13–14 (Phase 3): * Put Adam's art and Dany's writing into the game.
+* Weeks 13–14 (Phase 3): Put Adam's art and Dany's writing into the game.
 * Code the final puzzles (like making the constellation puzzle clickable).
 * Build the final game file (.exe / .app) so the lecturer can play it.
 
