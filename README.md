@@ -114,30 +114,30 @@ Your main job is to put the game together in Ren'Py and make sure it actually ru
 Your main job is to create how the game looks and how the player clicks on things.
 
 * Week 1 (Phase 1): Sketch out a simple, clean interface. Decide where the text box goes and what the buttons look like.
-* Weeks 8–10 (Phase 2): * Draw the Fast-Travel Map screen showing the Courtyard, Cafe, and Playground.
+* Weeks 8–10 (Phase 2): Draw the Fast-Travel Map screen showing the Courtyard, Cafe, and Playground.
 * Find or draw the background image for the Library and the character art for Aura using Ibis Paint.
 * Design a simple "Inventory" button so players can see the clues they collect.
-* Weeks 13–14 (Phase 3): * Create the visual effects, like the "shattered glass" screen effect when the player fails and time resets.
+* Weeks 13–14 (Phase 3): Create the visual effects, like the "shattered glass" screen effect when the player fails and time resets.
 * Create the glowing effect for the "Lost Record" book at the end of the game.
 
 **Dany (Lead Writer)**
 Your main job is to write everything the characters say and the clues the player finds.
 
 * Week 1 (Phase 1): Write a short summary of what happens in each of the 7 scenes.
-* Weeks 8–10 (Phase 2): * Write the exact script for Alice waking up at 00:00.
+* Weeks 8–10 (Phase 2): Write the exact script for Alice waking up at 00:00.
 * Write the first conversation between Alice and Aura. You must write both the "correct" choices and the "wrong" choices that cause the game to restart.
 * Write the text for the first hidden clue (the torn astronomy page).
-* Weeks 13–14 (Phase 3): * Write the riddles for the History puzzle and the Timeline puzzle.
+* Weeks 13–14 (Phase 3): Write the riddles for the History puzzle and the Timeline puzzle.
 * Write the final ending conversation where Aura says goodbye and Alice wakes up in the real world.
 
 **Hazri (QA Tester & Evaluator)**
 Your main job is to play the game, find bugs, and write the final testing report for the class.
 
 * Week 1 (Phase 1): Read through the project proposal and double-check that the 9 Usability Questions make sense before handing it in.
-* Weeks 8–10 (Phase 2): * Play first version of the game.
+* Weeks 8–10 (Phase 2): Play first version of the game.
 * Click every wrong answer on purpose to make sure the game successfully restarts.
 * Tell Adam if the map buttons are too small or confusing.
-* Weeks 13–14 (Phase 3): * Give the finished game to 3-5 friends outside the group to play.
+* Weeks 13–14 (Phase 3): Give the finished game to 3-5 friends outside the group to play.
 * Ask them to fill out the System Usability Scale (SUS) survey.
 * Write the "Findings and Discussion" and "Limitations" sections of the final report based on what those testers said.
 
@@ -160,28 +160,28 @@ To edit the game, you need to download the files from this page to your computer
 To keep the game from breaking, **no one should make changes directly to the `main` branch.** Everyone will create their own branch, do their work there, and then ask for it to be merged into the main game.
 
 **Step 1: First-Time Setup (Downloading the Game)**
-If you haven't downloaded the game yet, open your terminal and run:
+# If you haven't downloaded the game yet, open your terminal and run:
 ```bash
-git clone [https://github.com/mkzbrs/the_midnight_archive.git](https://github.com/mkzbrs/the_midnight_archive.git)
+git clone https://github.com/mkzbrs/the_midnight_archive.git
 cd the_midnight_archive
 ```
 
 **Step 2: Before You Start Working (Getting Updates)**
-Always do this so you have the newest code before making any changes:
+# Always do this so you have the newest code before making any changes:
 ```bash
 git checkout main
 git pull origin main
 ```
 
 **Step 3: Creating Your Own Branch**
-Never work directly on main. Create a safe workspace using your name and task:
+# Never work directly on main. Create a safe workspace using your name and task:
 ```bash
 # Example: git checkout -b adam-map-ui
 git checkout -b <your-name>-<your-task>
 ```
 
 **Step 4: Saving Your Work**
-After making your edits in Ren'Py, save your work and upload it to GitHub:
+# After making your edits in Ren'Py, save your work and upload it to GitHub:
 ```bash
 # 1. Add all the files you changed
 git add .
@@ -192,7 +192,7 @@ git push origin <your-branch-name>
 ```
 
 **Step 5: Sending Your Work to the Main Game (Pull Request)**
-When your task is completely done and you want Khuzaimi to add it to the final game:
+# When your task is completely done and you want Khuzaimi to add it to the final game:
 
 1. Go to the project page on the GitHub website.
 2. You will see a green Compare & pull request button for your newly pushed branch. Click it.
