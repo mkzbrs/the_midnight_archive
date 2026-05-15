@@ -1,8 +1,8 @@
 # 🕰️ The Midnight Archive
 
-**Course:** STTHK2123 Interaction System and Tools (Session A252) 
-**Instructor:** Dr. Nurul Izzah Binti Abdul Aziz 
-**Engine:** Ren'Py Visual Novel Engine 
+- **Course:** STTHK2123 Interaction System and Tools (Session A252) 
+- **Instructor:** Dr. Nurul Izzah Binti Abdul Aziz 
+- **Engine:** Ren'Py Visual Novel Engine 
 
 ---
 
