@@ -160,28 +160,28 @@ To edit the game, you need to download the files from this page to your computer
 To keep the game from breaking, **no one should make changes directly to the `main` branch.** Everyone will create their own branch, do their work there, and then ask for it to be merged into the main game.
 
 **Step 1: First-Time Setup (Downloading the Game)**
-# If you haven't downloaded the game yet, open your terminal and run:
+If you haven't downloaded the game yet, open your terminal and run:
 ```bash
 git clone https://github.com/mkzbrs/the_midnight_archive.git
 cd the_midnight_archive
 ```
 
 **Step 2: Before You Start Working (Getting Updates)**
-# Always do this so you have the newest code before making any changes:
+Always do this so you have the newest code before making any changes:
 ```bash
 git checkout main
 git pull origin main
 ```
 
 **Step 3: Creating Your Own Branch**
-# Never work directly on main. Create a safe workspace using your name and task:
+Never work directly on main. Create a safe workspace using your name and task:
 ```bash
 # Example: git checkout -b adam-map-ui
 git checkout -b <your-name>-<your-task>
 ```
 
 **Step 4: Saving Your Work**
-# After making your edits in Ren'Py, save your work and upload it to GitHub:
+After making your edits in Ren'Py, save your work and upload it to GitHub:
 ```bash
 # 1. Add all the files you changed
 git add .
@@ -192,7 +192,7 @@ git push origin <your-branch-name>
 ```
 
 **Step 5: Sending Your Work to the Main Game (Pull Request)**
-# When your task is completely done and you want Khuzaimi to add it to the final game:
+When your task is completely done and you want Khuzaimi to add it to the final game:
 
 1. Go to the project page on the GitHub website.
 2. You will see a green Compare & pull request button for your newly pushed branch. Click it.
