@@ -100,46 +100,58 @@ The game is built with a simple, clean simulation interface.
 ---
 
 **Khuzaimi (Lead Developer)**
-Your main job is to put the game together in Ren'Py and make sure it actually runs.
+- Your main job is to put the game together in Ren'Py and make sure it actually runs.
 
-* Week 1 (Phase 1): Set up the GitHub repository.
-* Weeks 8–10 (Phase 2): Write the Ren'Py code to make the game start at the library.
-* Code the conversation menu so the player can choose answers when talking to Aura.
-* Code the "Imperfect Memory" time-loop: Make the game restart if the player chooses the wrong answer.
-* Weeks 13–14 (Phase 3): Put Adam's art and Dany's writing into the game.
-* Code the final puzzles (like making the constellation puzzle clickable).
-* Build the final game file (.exe / .app) so the lecturer can play it.
+* **Week 1 (Phase 1):**
+- Set up the GitHub repository.
+* **Weeks 8–10 (Phase 2):** 
+- Write the Ren'Py code to make the game start at the library.
+- Code the conversation menu so the player can choose answers when talking to Aura.
+- Code the "Imperfect Memory" time-loop: Make the game restart if the player chooses the wrong answer.
+* **Weeks 13–14 (Phase 3):** 
+- Put Adam's art and Dany's writing into the game.
+- Code the final puzzles (like making the constellation puzzle clickable).
+- Build the final game file (.exe / .app) so the lecturer can play it.
 
 **Adam (UI/UX Designer)**
-Your main job is to create how the game looks and how the player clicks on things.
+- Your main job is to create how the game looks and how the player clicks on things.
 
-* Week 1 (Phase 1): Sketch out a simple, clean interface. Decide where the text box goes and what the buttons look like.
-* Weeks 8–10 (Phase 2): Draw the Fast-Travel Map screen showing the Courtyard, Cafe, and Playground.
-* Find or draw the background image for the Library and the character art for Aura using Ibis Paint.
-* Design a simple "Inventory" button so players can see the clues they collect.
-* Weeks 13–14 (Phase 3): Create the visual effects, like the "shattered glass" screen effect when the player fails and time resets.
-* Create the glowing effect for the "Lost Record" book at the end of the game.
+* **Week 1 (Phase 1):** 
+- Sketch out a simple, clean interface. Decide where the text box goes and what the buttons look like.
+* **Weeks 8–10 (Phase 2):** 
+- Draw the Fast-Travel Map screen showing the Courtyard, Cafe, and Playground.
+- Find or draw the background image for the Library and the character art for Aura using Ibis Paint.
+- Design a simple "Inventory" button so players can see the clues they collect.
+* **Weeks 13–14 (Phase 3):** 
+- Create the visual effects, like the "shattered glass" screen effect when the player fails and time resets.
+- Create the glowing effect for the "Lost Record" book at the end of the game.
 
 **Dany (Lead Writer)**
-Your main job is to write everything the characters say and the clues the player finds.
+- Your main job is to write everything the characters say and the clues the player finds.
 
-* Week 1 (Phase 1): Write a short summary of what happens in each of the 7 scenes.
-* Weeks 8–10 (Phase 2): Write the exact script for Alice waking up at 00:00.
-* Write the first conversation between Alice and Aura. You must write both the "correct" choices and the "wrong" choices that cause the game to restart.
-* Write the text for the first hidden clue (the torn astronomy page).
-* Weeks 13–14 (Phase 3): Write the riddles for the History puzzle and the Timeline puzzle.
-* Write the final ending conversation where Aura says goodbye and Alice wakes up in the real world.
+* **Week 1 (Phase 1):** 
+- Write a short summary of what happens in each of the 7 scenes.
+* **Weeks 8–10 (Phase 2):** 
+- Write the exact script for Alice waking up at 00:00.
+- Write the first conversation between Alice and Aura. You must write both the "correct" choices and the "wrong" choices that cause the game to restart.
+- Write the text for the first hidden clue (the torn astronomy page).
+* **Weeks 13–14 (Phase 3):** 
+- Write the riddles for the History puzzle and the Timeline puzzle.
+- Write the final ending conversation where Aura says goodbye and Alice wakes up in the real world.
 
 **Hazri (QA Tester & Evaluator)**
-Your main job is to play the game, find bugs, and write the final testing report for the class.
+- Your main job is to play the game, find bugs, and write the final testing report for the class.
 
-* Week 1 (Phase 1): Read through the project proposal and double-check that the 9 Usability Questions make sense before handing it in.
-* Weeks 8–10 (Phase 2): Play first version of the game.
-* Click every wrong answer on purpose to make sure the game successfully restarts.
-* Tell Adam if the map buttons are too small or confusing.
-* Weeks 13–14 (Phase 3): Give the finished game to 3-5 friends outside the group to play.
-* Ask them to fill out the System Usability Scale (SUS) survey.
-* Write the "Findings and Discussion" and "Limitations" sections of the final report based on what those testers said.
+* **Week 1 (Phase 1):** 
+- Read through the project proposal and double-check that the 9 Usability Questions make sense before handing it in.
+* **Weeks 8–10 (Phase 2):** 
+- Play first version of the game.
+- Click every wrong answer on purpose to make sure the game successfully restarts.
+- Tell Adam if the map buttons are too small or confusing.
+* **Weeks 13–14 (Phase 3):** 
+- Give the finished game to 3-5 friends outside the group to play.
+- Ask them to fill out the System Usability Scale (SUS) survey.
+- Write the "Findings and Discussion" and "Limitations" sections of the final report based on what those testers said.
 
 ---
 
