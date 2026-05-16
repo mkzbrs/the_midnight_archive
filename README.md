@@ -211,3 +211,9 @@ When your task is completely done and you want Khuzaimi to add it to the final g
 2. You will see a green Compare & pull request button for your newly pushed branch. Click it.
 3. Click Create Pull Request.
 4. Khuzaimi will review your code. If it looks good, he will merge it into the main game!
+
+---
+
+## Documentation
+
+Google Docs: https://docs.google.com/document/d/1ELHNrHG6babtiUP31xfW9z8-q5sOIPVJZI_9cQKYfJU/edit?usp=sharing
