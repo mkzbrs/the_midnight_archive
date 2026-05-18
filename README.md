@@ -166,10 +166,6 @@ To prove the game is successful, the team will test the final prototype using tw
 
 ## 💻 9. GitHub Guide: How to Work on This Project
 
-To edit the game, you need to download the files from this page to your computer, make your changes, and send them back.
-
-## 💻 How to Work on This Project (Terminal Guide)
-
 To keep the game from breaking, **no one should make changes directly to the `main` branch.** Everyone will create their own branch, do their work there, and then ask for it to be merged into the main game.
 
 **Step 1: First-Time Setup (Downloading the Game)**
@@ -216,4 +212,4 @@ When your task is completely done and you want Khuzaimi to add it to the final g
 
 ## Documentation
 
-Google Docs: https://docs.google.com/document/d/1ELHNrHG6babtiUP31xfW9z8-q5sOIPVJZI_9cQKYfJU/edit?usp=sharing
+Google Drive: [https://docs.google.com/document/d/1ELHNrHG6babtiUP31xfW9z8-q5sOIPVJZI_9cQKYfJU/edit?usp=sharing](https://drive.google.com/drive/folders/18Z0NYSGKPRSYWcnHXXaScC0-gwph-M2v?usp=share_link)
