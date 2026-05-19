@@ -19,6 +19,7 @@ define config.name = _("The Midnight Archive")
 ## this to False to hide the title.
 
 define gui.show_name = False
+## default preferences.fullscreen = True
 
 
 ## The version of the game.

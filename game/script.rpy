@@ -1,18 +1,18 @@
 ﻿# --- CHARACTER DEFINITIONS ---
 
 # --- ALICE SPRITES ---
-image Alice_neutral = "images/scene2/Alice_neutral.png"
-image Alice_scared = "images/scene2/Alice_scared.png"
-image Alice_surprised = "images/scene2/Alice_surprised.png"
-image Alice_curious = "images/scene2/Alice_curious.png"
-image Alice_smile = "images/scene2/Alice_smile.png"
+image Alice_neutral = Transform("images/scene2/Alice_neutral.png", zoom=1.5, yoffset=300)
+image Alice_scared = Transform("images/scene2/Alice_scared.png", zoom=1.5, yoffset=300)
+image Alice_surprised = Transform("images/scene2/Alice_surprised.png", zoom=1.5, yoffset=300)
+image Alice_curious = Transform("images/scene2/Alice_curious.png", zoom=1.5, yoffset=300)
+image Alice_smile = Transform("images/scene2/Alice_smile.png", zoom=1.5, yoffset=300)
 
 # --- AURA SPRITES ---
-image Aura_neutral = "images/scene2/Aura_neutral.png"
-image Aura_thinking = "images/scene2/Aura_thinking.png"
-image Aura_smile = "images/scene2/Aura_smile.png"
-image Aura_relieved = "images/scene2/Aura_relieved.png"
-image Aura_sad = "images/scene2/Aura_sad.png"
+image Aura_neutral = Transform("images/scene2/Aura_neutral.png", zoom=1.5, yoffset=300)
+image Aura_thinking = Transform("images/scene2/Aura_thinking.png", zoom=1.5, yoffset=300)
+image Aura_smile = Transform("images/scene2/Aura_smile.png", zoom=1.5, yoffset=300)
+image Aura_relieved = Transform("images/scene2/Aura_relieved.png", zoom=1.5, yoffset=300)
+image Aura_sad = Transform("images/scene2/Aura_sad.png", zoom=1.5, yoffset=300)
 
 # --- CUSTOM CAMERA EFFECTS ---
 transform lower_camera:
@@ -30,28 +30,32 @@ transform slow_zoom:
 transform fullscreen_cover:
     xysize (1920, 1080) 
     fit "cover" 
+    align (0.5, 0.5)
+
+transform center_zoom:
     align (0.5, 0.5) 
+    ease 1.5 zoom 2.5 alpha 0.0
 
 # --- INTERACTIVE SCREENS ---
 screen find_clock_screen():
     imagebutton:
-        xalign 0.35  
-        yalign 0.65
+        xalign 0.47  
+        yalign 0.25
         
-        idle "scene1/clock.png"
-        hover "scene1/clock_glow.png"
+        idle Transform("scene1/clock.png", zoom=0.57)
         
-        at Transform(zoom=0.3)
+        hover Transform("scene1/clock_glow.png", zoom=0.25) 
 
         action Return()
 
 # --- SCENE 2 SETTINGS ---
 define alice_speak = Character("Alice")
-define aura = Character("Aura", color="#d4af37")
+define aura = Character("Aura", color="#ffffff")
 image white = Solid("#ffffff")
 
-# --- GAME START ---
+# --- SCENE 2 ---
 label start:
+    show border onlayer UI
 
     # SCENE 01: THE WAKE UP
 
@@ -90,13 +94,19 @@ label start:
 
     "{b}SYSTEM:{/b} Find and click on the wall clock."
 
-    scene library_clock at fullscreen_cover
+    $ cinematic = True
+
+    pause 2.0
+
+    scene library_clock at fullscreen_cover with dissolve
 
     call screen find_clock_screen
     
     play sound "audio/scene1/clock_bell.mp3" volume 0.5
 
-    "{i}The digital clock on the wall blinks: 00:00.{/i}"
+    $ cinematic = False
+
+    "{i}The clock on the wall rang: 00:00.{/i}"
 
     alice "Midnight?! You’ve got to be kidding me."
     alice "The gates are probably locked already."
@@ -119,7 +129,9 @@ label start:
 
     scene hallway_3 at fullscreen_cover with dissolve
 
-    pause 2.0    
+    pause 2.0
+
+    play sound "audio/scene1/foot_step.mp3" volume 0.7
 
     scene library_night at fullscreen_cover with dissolve
 
@@ -147,7 +159,7 @@ label start:
 
     pause 2.0
 
-    play sound "audio/scene1/reading_book.mp3" volume 0.4
+    play sound "audio/scene1/reading_book.mp3" volume 1.0
 
     alice "…What was that?"
 
@@ -173,8 +185,6 @@ label scene_02:
     
     play music "audio/scene2/bgm_mysterious_melody.mp3" volume 0.6 fadein 2.0
 
-    show Alice_scared at left with dissolve
-
     alice "I can’t keep doing this… none of this makes sense anymore."
 
     play sound "audio/scene2/reading.mp3"
@@ -187,19 +197,17 @@ label scene_02:
 
     stop sound fadeout 0.5
 
-    show Aura_neutral at right with dissolve
+    show Aura_neutral with dissolve
+
+    $ cinematic = True
 
     aura "So… you really can see me."
-
-    hide Alice_scared
-    show Alice_surprised at left
-
     alice "She doesn’t look like a normal student."
     alice "Her uniform feels old… almost ceremonial. Like she came from another era entirely."
 
-    show Aura_neutral at center with ease
-
     aura "Follow me."
+
+    show Aura_neutral at center_zoom
 
     stop music fadeout 0.5
 
@@ -209,7 +217,7 @@ label scene_02:
 
     scene ethereal at fullscreen_cover with dissolve
 
-    show Aura_thinking at right
+    show Aura_smile at right
     show Alice_curious at left
 
     alice_speak "…Where am I?"
@@ -217,13 +225,19 @@ label scene_02:
     aura "This place is called the Ethereal."
     aura "A space hidden between memory and reality."
     
+    hide Aura_smile
     show Aura_neutral at right
+
     aura "You are trapped inside a Temporal Blindspot."
 
     alice_speak "Temporal… what?"
 
     aura "A fracture created when a person’s mind reaches its limit."
     aura "Time loops. Spaces repeat. Memories become unstable."
+
+    hide Aura_neutral
+    show Aura_smile at right
+
     aura "That is why the hallways kept bringing you back."
 
     hide Alice_curious
@@ -234,6 +248,7 @@ label scene_02:
 
     show echo at truecenter with dissolve
 
+    hide Aura_smile
     show Aura_thinking at right
     aura "Scattered across this campus are fragments known as Echoes."
     aura "They are pieces of lost memories connected to something called the Lost Record."
@@ -242,12 +257,14 @@ label scene_02:
     show Alice_curious at left
     alice_speak "And the puzzles?"
 
+    hide Aura_thinking
     show Aura_neutral at right
     aura "The Echoes are sealed behind them."
     aura "Solve the puzzles, recover the Echoes, and the Lost Record can finally be unraveled."
 
     alice_speak "Why can’t you do it yourself?"
 
+    hide Aura_neutral
     show Aura_sad at right
     aura "Because I no longer belong to your reality."
     aura "I can guide you… but only you can interact with what remains inside the campus."
@@ -255,6 +272,7 @@ label scene_02:
     hide echo with dissolve
     show archivist_bookmark at truecenter with dissolve
 
+    hide Aura_sad
     show Aura_smile at right
     aura "Take this."
     aura "The Archivist Bookmark."
@@ -265,6 +283,7 @@ label scene_02:
     alice_speak "This is insane…"
     alice "But if she’s telling the truth… then this may be the only way out."
 
+    hide Aura_smile
     show Aura_relieved at right
     aura "Will you help me?"
 
@@ -275,22 +294,32 @@ label scene_02:
     alice_speak "…Alright."
     alice_speak "I’ll do it."
 
+    stop music fadeout 2.0
+
     play sound "audio/scene2/sfx_magical_glow.mp3"
 
     scene white with Fade(0.1, 0.0, 0.5)
 
+    stop music fadeout 0.1
+
     scene bookshelves at fullscreen_cover with fade
     show Alice_surprised at left
+
+    play sound "audio/scene2/door_close.mp3"
     
     alice_speak "Wait—"
 
-    play sound "audio/scene2/door_close.mp3"
-
     hide Alice_surprised
+
     show Alice_neutral at left
+
+    $ cinematic = False
+
     alice "…I’m back in the library."
 
+    play sound "audio/scene2/quest_accept.mp3"
     "{b}OBJECTIVE:{/b} Solve puzzles and gather Echoes."
+    stop sound fadeout 0.5
 
     stop music fadeout 3.0
 
