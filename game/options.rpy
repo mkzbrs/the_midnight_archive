@@ -1,4 +1,4 @@
-﻿## This file contains options that can be changed to customize your game.
+## This file contains options that can be changed to customize your game.
 ##
 ## Lines beginning with two '#' marks are comments, and you shouldn't uncomment
 ## them. Lines beginning with a single '#' mark are commented-out code, and you
@@ -12,13 +12,13 @@
 ##
 ## The _() surrounding the string marks it as eligible for translation.
 
-define config.name = _("Midnight Archive")
+define config.name = _("The Midnight Archive")
 
 
 ## Determines if the title given above is shown on the main menu screen. Set
 ## this to False to hide the title.
 
-define gui.show_name = True
+define gui.show_name = False
 
 
 ## The version of the game.
@@ -37,7 +37,7 @@ define gui.about = _p("""
 ## distribution. This must be ASCII-only, and must not contain spaces, colons,
 ## or semicolons.
 
-define build.name = "MidnightArchive"
+define build.name = "The Midnight Archive"
 
 
 ## Sounds and music ############################################################
@@ -64,6 +64,9 @@ define config.has_voice = True
 
 # define config.main_menu_music = "main-menu-theme.ogg"
 
+## Layers ######################################################################
+define config.layer_clipping['master'] = (0, 102, 1920, 876)
+define config.layers = [ 'master', 'UI', 'transient', 'screens', 'overlay', 'particles' ]
 
 ## Transitions #################################################################
 ##
@@ -73,23 +76,23 @@ define config.has_voice = True
 
 ## Entering or exiting the game menu.
 
-define config.enter_transition = dissolve
-define config.exit_transition = dissolve
+define config.enter_transition = starTrans
+define config.exit_transition = starTrans
 
 
 ## Between screens of the game menu.
 
-define config.intra_transition = dissolve
+define config.intra_transition = starTrans
 
 
 ## A transition that is used after a game has been loaded.
 
-define config.after_load_transition = None
+define config.after_load_transition = starTrans
 
 
 ## Used when entering the main menu after the game has ended.
 
-define config.end_game_transition = None
+define config.end_game_transition = starTrans
 
 
 ## A variable to set the transition used when the game starts does not exist.
@@ -120,7 +123,7 @@ define config.window_hide_transition = Dissolve(.2)
 ## Controls the default text speed. The default, 0, is infinite, while any other
 ## number is the number of characters per second to type out.
 
-default preferences.text_cps = 0
+default preferences.text_cps = 50
 
 
 ## The default auto-forward delay. Larger numbers lead to longer waits, with 0
@@ -143,7 +146,7 @@ default preferences.afm_time = 15
 ## This generally should not be changed, and if it is, should always be a
 ## literal string, not an expression.
 
-define config.save_directory = "MidnightArchive-1775634764"
+define config.save_directory = "AstrologyUI-1702444616"
 
 
 ## Icon ########################################################################
