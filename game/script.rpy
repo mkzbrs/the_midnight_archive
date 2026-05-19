@@ -1,5 +1,18 @@
 ﻿# --- CHARACTER DEFINITIONS ---
-define alice = Character("Alice", what_italic=True)
+
+# --- ALICE SPRITES ---
+image Alice_neutral = "images/scene2/Alice_neutral.png"
+image Alice_scared = "images/scene2/Alice_scared.png"
+image Alice_surprised = "images/scene2/Alice_surprised.png"
+image Alice_curious = "images/scene2/Alice_curious.png"
+image Alice_smile = "images/scene2/Alice_smile.png"
+
+# --- AURA SPRITES ---
+image Aura_neutral = "images/scene2/Aura_neutral.png"
+image Aura_thinking = "images/scene2/Aura_thinking.png"
+image Aura_smile = "images/scene2/Aura_smile.png"
+image Aura_relieved = "images/scene2/Aura_relieved.png"
+image Aura_sad = "images/scene2/Aura_sad.png"
 
 # --- CUSTOM CAMERA EFFECTS ---
 transform lower_camera:
@@ -104,21 +117,23 @@ label start:
 
     alice "Right side corridor… that should be the exit."
 
-    scene library_hallway1 at fullscreen_cover with dissolve
+    scene hallway_3 at fullscreen_cover with dissolve
 
-    scene library_hallway2 at fullscreen_cover with dissolve
+    pause 2.0    
 
-    scene library_hallway1 at fullscreen_cover with dissolve
+    scene library_night at fullscreen_cover with dissolve
 
     alice "…Wait."
-    alice "Why does this hallway look the same?"
+    alice "Why does this place look the same?"
     alice "I’ve been walking straight this whole time."
 
     play sound "audio/scene1/foot_step.mp3" loop volume 1.0
 
+    scene hallway_3 at fullscreen_cover with dissolve
+
     alice "No… no way. This feels like déjà vu."
 
-    scene library_hallway2 at fullscreen_cover with dissolve
+    scene library_hallway at fullscreen_cover with dissolve
 
     alice "I swear I passed this staircase already."
 
@@ -126,7 +141,7 @@ label start:
 
     alice "I’m tired…"
 
-    show library_hallway2 at lower_camera
+    show library_hallway at lower_camera
 
     alice "Maybe I should rest for a second and think."
 
@@ -152,54 +167,48 @@ label start:
 # --- SCENE 2 STARTS HERE ---
 label scene_02:
 
-    # SYSTEM: [Display bookshelves.jpeg]
     scene bookshelves at fullscreen_cover with fade
 
-    # SYSTEM: [Play foot_step.mp3 softly]
     play sound "audio/scene2/foot_step.mp3" volume 0.5
     
-    # SYSTEM: [Play bgm_mysterious_melody]
     play music "audio/scene2/bgm_mysterious_melody.mp3" volume 0.6 fadein 2.0
 
-    # SYSTEM: [Display SPRITE Alice_scared.png]
     show Alice_scared at left with dissolve
 
     alice "I can’t keep doing this… none of this makes sense anymore."
 
-    # SYSTEM: [Play page_turn.mp3]
-    play sound "audio/scene2/page_turn.mp3"
+    play sound "audio/scene2/reading.mp3"
 
     alice "…That sound again."
 
-    # SYSTEM: [A faint golden glow appears between the bookshelves]
     "{i}A faint golden glow flickers between the dusty bookshelves.{/i}"
 
     alice_speak "Hello…? Is someone there?"
 
-    # SYSTEM: [Display SPRITE Aura_neutral.png]
+    stop sound fadeout 0.5
+
     show Aura_neutral at right with dissolve
 
     aura "So… you really can see me."
 
-    # SYSTEM: [Display SPRITE Alice_surprised.png]
     hide Alice_scared
     show Alice_surprised at left
 
     alice "She doesn’t look like a normal student."
     alice "Her uniform feels old… almost ceremonial. Like she came from another era entirely."
 
-    # SYSTEM: [Sprite Aura_neutral.png slowly walks past Alice]
     show Aura_neutral at center with ease
 
     aura "Follow me."
 
-    # SYSTEM: [Play door_open.mp3]
+    stop music fadeout 0.5
+
     play sound "audio/scene2/door_open.mp3"
 
-    # SYSTEM: [Transition dissolve to ethereal.jpeg]
+    play music "audio/scene2/ethereal_bgm.mp3" volume 0.6 fadein 2.0
+
     scene ethereal at fullscreen_cover with dissolve
 
-    # We have to re-show the characters because changing the 'scene' clears the screen
     show Aura_thinking at right
     show Alice_curious at left
 
@@ -223,8 +232,6 @@ label scene_02:
 
     aura "Real enough."
 
-    # SYSTEM: [Display echo.png floating faintly in the background]
-    # 'truecenter' puts the image exactly in the middle of the screen
     show echo at truecenter with dissolve
 
     show Aura_thinking at right
@@ -241,12 +248,10 @@ label scene_02:
 
     alice_speak "Why can’t you do it yourself?"
 
-    # Assuming Adam draws an Aura_sad.png, since neutral doesn't fit the emotion here
     show Aura_sad at right
     aura "Because I no longer belong to your reality."
     aura "I can guide you… but only you can interact with what remains inside the campus."
 
-    # SYSTEM: [Display archivist_bookmark.png]
     hide echo with dissolve
     show archivist_bookmark at truecenter with dissolve
 
@@ -263,39 +268,30 @@ label scene_02:
     show Aura_relieved at right
     aura "Will you help me?"
 
-    # SYSTEM: [Pause for 2 seconds]
     pause 2.0
 
-    # Assuming Adam draws an Alice_smile.png!
     hide Alice_neutral
     show Alice_smile at left
     alice_speak "…Alright."
     alice_speak "I’ll do it."
 
-    # SYSTEM: [Play sfx_magical_glow]
     play sound "audio/scene2/sfx_magical_glow.mp3"
 
-    # SYSTEM: [Screen flashes brightly]
     scene white with Fade(0.1, 0.0, 0.5)
 
-    # SYSTEM: [Fast transition dissolve back to bookshelves.jpeg]
-    scene bookshelves at fullscreen_cover
+    scene bookshelves at fullscreen_cover with fade
     show Alice_surprised at left
     
     alice_speak "Wait—"
 
-    # SYSTEM: [Play door_close.mp3]
     play sound "audio/scene2/door_close.mp3"
 
     hide Alice_surprised
     show Alice_neutral at left
     alice "…I’m back in the library."
 
-    # SYSTEM: [Display objective text: “Solve puzzles and gather Echoes.”]
     "{b}OBJECTIVE:{/b} Solve puzzles and gather Echoes."
 
-    # SYSTEM: [Fade out BGM slowly]
     stop music fadeout 3.0
 
-    # SYSTEM: [The game begins]
     jump map_screen
