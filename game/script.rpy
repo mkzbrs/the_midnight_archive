@@ -57,6 +57,8 @@ label start:
 
     alice "The library always feels peaceful during asar. Quiet… warm… safe."
 
+    play sound "audio/scene1/page_turn.mp3"
+
     alice "Maybe I should rest my eyes for a minute…"
 
     stop music fadeout 2.0
@@ -75,9 +77,11 @@ label start:
 
     "{b}SYSTEM:{/b} Find and click on the wall clock."
 
+    scene library_clock at fullscreen_cover
+
     call screen find_clock_screen
     
-    play sound "audio/scene1/page_turn.mp3" volume 0.5
+    play sound "audio/scene1/clock_bell.mp3" volume 0.5
 
     "{i}The digital clock on the wall blinks: 00:00.{/i}"
 
@@ -96,9 +100,15 @@ label start:
 
     play sound "audio/scene1/foot_step.mp3" volume 0.7
 
+    scene library_hallway at fullscreen_cover with dissolve
+
     alice "Right side corridor… that should be the exit."
 
-    scene library_hallway at fullscreen_cover with dissolve
+    scene library_hallway1 at fullscreen_cover with dissolve
+
+    scene library_hallway2 at fullscreen_cover with dissolve
+
+    scene library_hallway1 at fullscreen_cover with dissolve
 
     alice "…Wait."
     alice "Why does this hallway look the same?"
@@ -107,23 +117,26 @@ label start:
     play sound "audio/scene1/foot_step.mp3" loop volume 1.0
 
     alice "No… no way. This feels like déjà vu."
+
+    scene library_hallway2 at fullscreen_cover with dissolve
+
     alice "I swear I passed this staircase already."
 
     stop sound fadeout 0.5
 
     alice "I’m tired…"
 
-    show library_hallway at lower_camera
+    show library_hallway2 at lower_camera
 
     alice "Maybe I should rest for a second and think."
 
     pause 2.0
 
-#    play sound "audio/scene1/aura_voice1.mp3" volume 0.4
+    play sound "audio/scene1/reading_book.mp3" volume 0.4
 
     alice "…What was that?"
 
-#    play sound "audio/scene1/aura_voice2.mp3" volume 0.8
+    play sound "audio/scene1/reading.mp3" volume 0.8
 
     alice "Someone else is here."
     alice "But… the library was empty."
