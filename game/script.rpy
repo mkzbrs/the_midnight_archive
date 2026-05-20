@@ -321,6 +321,12 @@ label scene_02:
     "{b}OBJECTIVE:{/b} Solve puzzles and gather Echoes."
     stop sound fadeout 0.5
 
+    show bookshelves at enblur
+    show Alice_neutral at left, enblur
+    call chater_intro("Puzzle I", "JUXTAPOSITION")
+    show bookshelves at deblur
+    show Alice_neutral at left, deblur
+
     stop music fadeout 3.0
 
     jump map_screen
