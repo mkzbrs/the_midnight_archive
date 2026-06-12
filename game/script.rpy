@@ -325,7 +325,13 @@ label scene_02:
     play sound "audio/scene2/quest_accept.mp3"
     "{b}OBJECTIVE:{/b} Solve puzzles and gather Echoes."
 
-    jump map_screen
+    show bookshelves at enblur
+    show Alice_neutral at left, enblur
+    call chater_intro("Puzzle I", "JUXTAPOSITION")
+    show bookshelves at deblur
+    show Alice_neutral at left, deblur
+
+    stop music fadeout 3.0
 
 # --- TARGET TRANSITION LABEL ---
 # 🛠️ FIXED: Formatted the label properly so Ren'Py knows exactly where to transition at the end!

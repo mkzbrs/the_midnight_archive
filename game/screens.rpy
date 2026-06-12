@@ -4,6 +4,49 @@
 
 init offset = -1
 
+screen my_interface():
+    modal True
+
+    # Dim background (optional but recommended)
+    add Solid("#0008")
+
+
+    # Centered UI panel
+    add "images/fast_travel_ui.png":
+        xalign 0.5
+        yalign 0.5
+        zoom 2.0
+  
+    # Cancel button
+    imagebutton:
+        idle "images/cancel_button.png"
+        hover "images/cancel_button_glow.png"
+        xpos 600
+        ypos 640
+        at Transform(zoom=0.6)
+        action Hide("my_interface")
+
+    # Teleport button
+    imagebutton:
+        idle "images/travel_button.png"
+        hover "images/travel_button_glow.png"
+        xpos 950
+        ypos 630
+        at Transform(zoom=0.65)
+        action Jump("teleport_label")
+
+screen hud():
+
+    # Press I to toggle UI
+    key "m" action [
+        ToggleVariable("ui_open"),
+        Function(renpy.hide_screen, "say")
+    ]
+
+    # Show interface if open
+    if ui_open:
+        use my_interface
+
 
 ################################################################################
 ## Styles
