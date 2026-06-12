@@ -62,7 +62,7 @@ The game is built with a simple, clean simulation interface.
 | :--- | :--- | :--- | :--- |
 | **Muhammad Khuzaimi Bin Ramli** | 307261 | **Lead Developer** | Writing the Ren'Py scripts, programming the time-loop system, managing variables, and managing GitHub. |
 | **Adam Haris Bin Amran** | 307106 | **UI/UX Designer** | Designing the interface mockups, drawing the fast-travel map, and setting up the screen layouts. |
-| **Muhammad Dany Iskandar Bin Mohd Shahir** | 307321 | **Lead Writer** | Drafting all dialogue between Alice and Aura, writing the riddles, and creating the text for clue notes. |
+| **Muhammad Dany Iskandar Bin Mohd Shahir** | 307321 | **Lead Writer & Dialouge Scripter** | Drafting and implement all dialogue between Alice and Aura, writing the riddles, and creating the text for clue notes. |
 | **Muhammad Hazri Bin Mohammad Zahir** | 306894 | **QA & Audio Programmer** | Implement sound effect, running Usability Testing, and gathering player feedback scores. |
 
 ---
@@ -127,18 +127,19 @@ The game is built with a simple, clean simulation interface.
 - Create the visual effects, like the "shattered glass" screen effect when the player fails and time resets.
 - Create the glowing effect for the "Lost Record" book at the end of the game.
 
-**Dany (Lead Writer)**
-- Your main job is to write everything the characters say and the clues the player finds.
-
-* **Week 1 (Phase 1):** 
-- Write a short summary of what happens in each of the 7 scenes.
-* **Weeks 8–10 (Phase 2):** 
-- Write the exact script for Alice waking up at 00:00.
-- Write the first conversation between Alice and Aura. You must write both the "correct" choices and the "wrong" choices that cause the game to restart.
-- Write the text for the first hidden clue (the torn astronomy page).
-* **Weeks 13–14 (Phase 3):** 
-- Write the riddles for the History puzzle and the Timeline puzzle.
-- Write the final ending conversation where Aura says goodbye and Alice wakes up in the real world.
+**Dany (Lead Writer & Dialogue Scripter)**
+- Your main job is to write the entire story, characters' dialogue, and clues, AND format all of this text directly into the game's script files so it appears in the actual game.
+* **Week 1 (Phase 1):**
+- Write a short summary of what happens in each of the 7 scenes to guide the team.
+- Learn the basic format for writing text in the game engine (for example, typing ⁠aura "Wake up, Alice."⁠ instead of just writing it like a normal script).
+* **Weeks 8–10 (Phase 2):**
+- Write the full dialogue and story for the first half of the game directly into the script files in the shared Google Drive.
+- Type out all conversations into the code, ensuring you include both the "correct" dialogue paths and the text for the "wrong" choices that trigger the game to restart.
+- Write and format the narrative text for the early-game hidden clues so they are ready for the developer to use.
+* **Weeks 13–14 (Phase 3):**
+- Write and format all the text for the remaining scenes, including the riddles and puzzles for the second half of the game, directly into the script files.
+- Type out the complete ending sequence so the final conversations are fully implemented in the game.
+- Do a final read-through of the script files to fix any typos, grammar mistakes, or coding format errors before the final game is built.
 
 **Hazri (Audio Programmer & QA Tester)**
 - Your main job is to add the music, sound effects, and visual settings into the game code, and handle the final testing and written report. You must upload your code changes directly to GitHub.
@@ -155,7 +156,8 @@ The game is built with a simple, clean simulation interface.
 - Give the finished game to 20 friends outside the group to play and ask them to fill out the usability survey.
 - Write the "Methodology", "Findings and Discussion", and "Limitations" sections of our final written report based on what those testers said.
 
-* WARNING: EVERY CHANGES MADE IN GAME DIRECTORY NEED TO REQUEST COMMIT IN ORDER TO BE ELIGIBLE FOR YOUR NAME INCLUDED INTO THIS GROUP FINAL REPORT.
+---
+STRICT POLICY: NO COMMITS = NO CREDIT. YOU MUST PUSH ALL YOUR CHANGES TO THE GITHUB REPOSITORY. EVERY COMMIT MUST BE MADE ON YOUR OWN PERSONAL BRANCH "YOURNAME-BRANCH" AND YOU MUST SUBMIT A PULL REQUEST TO MERGE IT. ONLY PULL REQUESTS WILL BE CALCULATED AS VALID COMMITS. IF YOU HAVE ZERO MERGE REQUESTS, YOUR NAME WILL BE PERMANENTLY REMOVED FROM THE FINAL PROJECT REPORT.
 ---
 
 ## 📊 8. Evaluation Plan
