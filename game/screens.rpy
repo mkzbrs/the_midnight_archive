@@ -4,7 +4,8 @@
 
 init offset = -1
 
-screen my_interface():
+#Fast Travel Interface
+screen fast_travel_screen():
     modal True
 
     # Dim background (optional but recommended)
@@ -12,40 +13,41 @@ screen my_interface():
 
 
     # Centered UI panel
-    add "images/fast_travel_ui.png":
+    add "images/interface/travel/fast_travel_ui.png":
         xalign 0.5
         yalign 0.5
         zoom 2.0
   
     # Cancel button
     imagebutton:
-        idle "images/cancel_button.png"
-        hover "images/cancel_button_glow.png"
+        idle "images/interface/travel/cancel_button.png"
+        hover "images/interface/travel/cancel_button_glow.png"
         xpos 600
         ypos 640
         at Transform(zoom=0.6)
-        action Hide("my_interface")
+        action Return()
 
     # Teleport button
     imagebutton:
-        idle "images/travel_button.png"
-        hover "images/travel_button_glow.png"
+        idle "images/interface/travel/travel_button.png"
+        hover "images/interface/travel/travel_button_glow.png"
         xpos 950
         ypos 630
         at Transform(zoom=0.65)
         action Jump("teleport_label")
 
+#Input to handle fast travel keypress
 screen hud():
+    key "m" action Function(renpy.call_in_new_context, "open_fast_travel")
 
-    # Press I to toggle UI
-    key "m" action [
-        ToggleVariable("ui_open"),
-        Function(renpy.hide_screen, "say")
-    ]
-
-    # Show interface if open
-    if ui_open:
-        use my_interface
+#Called by the hud screen to handle fast travel output (TRAVEL/CANCEL).
+label open_fast_travel:
+    window hide
+    call screen fast_travel_screen
+    window show
+    if _return == "travel":
+        jump teleport_label
+    return
 
 
 ################################################################################
