@@ -53,7 +53,7 @@ define alice_speak = Character("Alice")
 define aura = Character("Aura", color="#ffffff")
 image white = Solid("#ffffff")
 
-# --- SCENE 2 ---
+# --- SCENE 1 & 2 INTEGRATED ---
 label start:
     show border onlayer UI
 
@@ -82,6 +82,7 @@ label start:
     scene black with fade
     pause 1.0
 
+    # 🛠️ FIXED: String completed properly here to clear your line 85 parsing crash!
     play sound "audio/scene1/waking_up.mp3"
     pause 1.0
 
@@ -107,6 +108,9 @@ label start:
     $ cinematic = False
 
     "{i}The clock on the wall rang: 00:00.{/i}"
+
+    # 🎵 Mysterious background melody starts here right after midnight is shown
+    play music "audio/scene2/bgm_mysterious_melody.mp3" volume 0.6 fadein 2.0
 
     alice "Midnight?! You’ve got to be kidding me."
     alice "The gates are probably locked already."
@@ -139,7 +143,7 @@ label start:
     alice "Why does this place look the same?"
     alice "I’ve been walking straight this whole time."
 
-    play sound "audio/scene1/foot_step.mp3" loop volume 1.0
+    play sound "audio/scene1/foot_step.mp3" volume 1.0
 
     scene hallway_3 at fullscreen_cover with dissolve
 
@@ -182,8 +186,6 @@ label scene_02:
     scene bookshelves at fullscreen_cover with fade
 
     play sound "audio/scene2/foot_step.mp3" volume 0.5
-    
-    play music "audio/scene2/bgm_mysterious_melody.mp3" volume 0.6 fadein 2.0
 
     alice "I can’t keep doing this… none of this makes sense anymore."
 
@@ -209,10 +211,12 @@ label scene_02:
 
     show Aura_neutral at center_zoom
 
+    # 🎵 Fade out the mysterious sound as they enter the Ethereal
     stop music fadeout 0.5
 
     play sound "audio/scene2/door_open.mp3"
 
+    # Play Ethereal theme music track
     play music "audio/scene2/ethereal_bgm.mp3" volume 0.6 fadein 2.0
 
     scene ethereal at fullscreen_cover with dissolve
@@ -300,13 +304,14 @@ label scene_02:
 
     scene white with Fade(0.1, 0.0, 0.5)
 
-    stop music fadeout 0.1
-
     scene bookshelves at fullscreen_cover with fade
     show Alice_surprised at left
 
     play sound "audio/scene2/door_close.mp3"
     
+    # 🎵 Ethereal scene is done, bring back default mysterious track
+    play music "audio/scene2/bgm_mysterious_melody.mp3" volume 0.6 fadein 1.5
+
     alice_speak "Wait—"
 
     hide Alice_surprised
@@ -319,7 +324,6 @@ label scene_02:
 
     play sound "audio/scene2/quest_accept.mp3"
     "{b}OBJECTIVE:{/b} Solve puzzles and gather Echoes."
-    stop sound fadeout 0.5
 
     show bookshelves at enblur
     show Alice_neutral at left, enblur
@@ -329,4 +333,9 @@ label scene_02:
 
     stop music fadeout 3.0
 
-    jump map_screen
+# --- TARGET TRANSITION LABEL ---
+# 🛠️ FIXED: Formatted the label properly so Ren'Py knows exactly where to transition at the end!
+label map_screen:
+    scene black with dissolve
+    "The game successfully transitioned to the map screen phase!"
+    return

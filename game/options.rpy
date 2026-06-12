@@ -18,19 +18,22 @@ define config.name = _("The Midnight Archive")
 ## Determines if the title given above is shown on the main menu screen. Set
 ## this to False to hide the title.
 
-define gui.show_name = False
+define gui.show_name = True
 ## default preferences.fullscreen = True
 
 
 ## The version of the game.
 
-define config.version = "1.0"
+define config.version = "1.0.0"
 
 
 ## Text that is placed on the game's about screen. Place the text between the
 ## triple-quotes, and leave a blank line between paragraphs.
 
 define gui.about = _p("""
+The Midnight Archive is a dialogue-based time-loop mystery game.
+Built for STTHK2123 Interaction System and Tools (Session A252).
+Instructor: Dr. Nurul Izzah Binti Abdul Aziz.
 """)
 
 

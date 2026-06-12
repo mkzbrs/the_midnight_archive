@@ -1,4 +1,4 @@
-# 🕰️ The Midnight Archive
+# The Midnight Archive
 
 - **Universiti Utara Malaysia**
 - **Course:** STTHK2123 Interaction System and Tools (Session A252) 
@@ -7,7 +7,7 @@
 
 ---
 
-## 📖 1. Project Summary & Objectives
+## 1. Project Summary & Objectives
 
 Currently, many narrative games allow players to progress by just clicking randomly without understanding the story. "Midnight Archive" aims to solve this by creating a dialogue-based mystery game where every choice matters. 
 
@@ -21,7 +21,7 @@ The game relies on a time-loop system. If the player makes a logical mistake, th
 
 ---
 
-## 🎭 2. Story Plot & Core Mechanics
+## 2. Story Plot & Core Mechanics
 
 ### The Story
 The year is 2030. The main character, Alice, is an exhausted student who falls asleep in the library. She wakes up at exactly midnight (00:00) to find the school completely locked and frozen in time. She is trapped in a "Temporal Blindspot"—a gap in reality where time and memory are unstable. 
@@ -39,7 +39,7 @@ She meets a mysterious girl named Aura, a "Memory Keeper". Aura asks Alice to he
 
 ---
 
-## 🕹️ 3. Interaction System & User Flow
+## 3. Interaction System & User Flow
 
 The game is built with a simple, clean simulation interface. 
 * **Explicit Inputs:** Clicking on dialogue choices to answer Aura. 
@@ -49,25 +49,25 @@ The game is built with a simple, clean simulation interface.
 
 ---
 
-## 🎯 4. Target Audience
+## 4. Target Audience
 * **Teenagers and Young Adults (Ages 16-25):** Users familiar with visual novels and interactive storytelling.
 * **Mystery Solvers:** Players who enjoy narrative games that require critical decision-making.
 * **Challenge Seekers:** Users who do not mind failing and are ready to overcome difficulties through trial and error.
 
 ---
 
-## 👨‍💻 5. Team Roles & Responsibilities
+## 5. Team Roles & Responsibilities
 
 | Name | Matric No. | Role | Responsibilities |
 | :--- | :--- | :--- | :--- |
 | **Muhammad Khuzaimi Bin Ramli** | 307261 | **Lead Developer** | Writing the Ren'Py scripts, programming the time-loop system, managing variables, and managing GitHub. |
 | **Adam Haris Bin Amran** | 307106 | **UI/UX Designer** | Designing the interface mockups, drawing the fast-travel map, and setting up the screen layouts. |
-| **Muhammad Dany Iskandar Bin Mohd Shahir** | 307321 | **Lead Writer** | Drafting all dialogue between Alice and Aura, writing the riddles, and creating the text for clue notes. |
-| **Muhammad Hazri Bin Mohammad Zahir** | 306894 | **QA & Testing** | Playing the game to find errors, running Usability Testing, and gathering player feedback scores. |
+| **Muhammad Dany Iskandar Bin Mohd Shahir** | 307321 | **Lead Writer & Dialouge Scripter** | Drafting and implement all dialogue between Alice and Aura, writing the riddles, and creating the text for clue notes. |
+| **Muhammad Hazri Bin Mohammad Zahir** | 306894 | **QA & Audio Programmer** | Implement sound effect, running Usability Testing, and gathering player feedback scores. |
 
 ---
 
-## 🛠️ 6. Software & Development Tools
+## 6. Software & Development Tools
 * **Ren'Py:** The main visual novel engine used to build the game.
 * **GitHub:** Used to store the game files online so the team can work together without deleting each other's progress.
 * **Visual Studio Code:** The code editor used to write the game scripts.
@@ -76,7 +76,7 @@ The game is built with a simple, clean simulation interface.
 
 ---
 
-## 📅 7. Development Checklist & Status Tracker
+## 7. Development Checklist & Status Tracker
 
 ### Phase 1: Project Proposal (Due Week 4)
 - [x] Define Target Users & Objectives.
@@ -84,12 +84,12 @@ The game is built with a simple, clean simulation interface.
 - [x] Submit Proposal Document to Dr. Nurul Izzah.
 
 ### Phase 2: Basic Prototype (Due Weeks 8-10)
-- [ ] Code the starting scene (Alice waking up at 00:00).
-- [ ] Add the first introductory dialogue with Aura.
+- [x] Code the starting scene (Alice waking up at 00:00).
+- [x] Add the first introductory dialogue with Aura.
 - [ ] Build the interactive fast-travel map (Courtyard, Cafe, Playground).
 - [ ] Create the first working interaction (finding a clue on the ground).
 - [ ] Code the loop system so the game successfully resets upon failure.
-- [ ] Submit Progress Report and present the working prototype.
+- [x] Submit Progress Report and present the working prototype.
 
 ### Phase 3: Final Game & Evaluation (Due Weeks 13-14)
 - [ ] Add all remaining puzzles (Constellation, History, Timeline).
@@ -127,36 +127,40 @@ The game is built with a simple, clean simulation interface.
 - Create the visual effects, like the "shattered glass" screen effect when the player fails and time resets.
 - Create the glowing effect for the "Lost Record" book at the end of the game.
 
-**Dany (Lead Writer)**
-- Your main job is to write everything the characters say and the clues the player finds.
+**Dany (Lead Writer & Dialogue Scripter)**
+- Your main job is to write the entire story, characters' dialogue, and clues, AND format all of this text directly into the game's script files so it appears in the actual game.
+* **Week 1 (Phase 1):**
+- Write a short summary of what happens in each of the 7 scenes to guide the team.
+- Learn the basic format for writing text in the game engine (for example, typing ⁠aura "Wake up, Alice."⁠ instead of just writing it like a normal script).
+* **Weeks 8–10 (Phase 2):**
+- Write the full dialogue and story for the first half of the game directly into the script files in the shared Google Drive.
+- Type out all conversations into the code, ensuring you include both the "correct" dialogue paths and the text for the "wrong" choices that trigger the game to restart.
+- Write and format the narrative text for the early-game hidden clues so they are ready for the developer to use.
+* **Weeks 13–14 (Phase 3):**
+- Write and format all the text for the remaining scenes, including the riddles and puzzles for the second half of the game, directly into the script files.
+- Type out the complete ending sequence so the final conversations are fully implemented in the game.
+- Do a final read-through of the script files to fix any typos, grammar mistakes, or coding format errors before the final game is built.
 
-* **Week 1 (Phase 1):** 
-- Write a short summary of what happens in each of the 7 scenes.
-* **Weeks 8–10 (Phase 2):** 
-- Write the exact script for Alice waking up at 00:00.
-- Write the first conversation between Alice and Aura. You must write both the "correct" choices and the "wrong" choices that cause the game to restart.
-- Write the text for the first hidden clue (the torn astronomy page).
-* **Weeks 13–14 (Phase 3):** 
-- Write the riddles for the History puzzle and the Timeline puzzle.
-- Write the final ending conversation where Aura says goodbye and Alice wakes up in the real world.
+**Hazri (Audio Programmer & QA Tester)**
+- Your main job is to add the music, sound effects, and visual settings into the game code, and handle the final testing and written report. You must upload your code changes directly to GitHub.
 
-**Hazri (QA Tester & Evaluator)**
-- Your main job is to play the game, find bugs, and write the final testing report for the class.
-
-* **Week 1 (Phase 1):** 
-- Read through the project proposal and double-check that the 9 Usability Questions make sense before handing it in.
-* **Weeks 8–10 (Phase 2):** 
-- Play first version of the game.
-- Click every wrong answer on purpose to make sure the game successfully restarts.
-- Tell Adam if the map buttons are too small or confusing.
-* **Weeks 13–14 (Phase 3):** 
-- Give the finished game to 3-5 friends outside the group to play.
-- Ask them to fill out the System Usability Scale (SUS) survey.
-- Write the "Findings and Discussion" and "Limitations" sections of the final report based on what those testers said.
+* **Week 1 (Phase 1):**
+- Open the game's settings file and type in the basic info (the game's title, version number, and the "About" text).
+- Find free, non-copyrighted background music and sound effects. Create an audio folder in the game files, put the music there, and upload it to GitHub.
+* **Weeks 8–10 (Phase 2):**
+- Open the game's visual settings file and change the code to match Adam's design (change the font style, text size, and make the text box transparent).
+- Type the code to make the music and sound effects play at the right times during the story (like a clicking sound for buttons, or library music when the game starts).
+- Type the code to add simple "fade in" and "fade out" effects when the scenes change. Upload all your code changes to GitHub.
+* **Weeks 13–14 (Phase 3):**
+- Write the code for the final Credits Screen at the end of the game, listing all our names and where you got the audio files. Upload this final code to GitHub.
+- Give the finished game to 20 friends outside the group to play and ask them to fill out the usability survey.
+- Write the "Methodology", "Findings and Discussion", and "Limitations" sections of our final written report based on what those testers said.
 
 ---
+STRICT POLICY: NO COMMITS = NO CREDIT. YOU MUST PUSH ALL YOUR CHANGES TO THE GITHUB REPOSITORY. EVERY COMMIT MUST BE MADE ON YOUR OWN PERSONAL BRANCH "YOURNAME-BRANCH" AND YOU MUST SUBMIT A PULL REQUEST TO MERGE IT. ONLY PULL REQUESTS WILL BE CALCULATED AS VALID COMMITS. IF YOU HAVE ZERO MERGE REQUESTS, YOUR NAME WILL BE PERMANENTLY REMOVED FROM THE FINAL PROJECT REPORT.
+---
 
-## 📊 8. Evaluation Plan
+## 8. Evaluation Plan
 
 To prove the game is successful, the team will test the final prototype using two methods:
 1. **System Usability Scale (SUS):** A 10-question survey given to testers to measure how easy the game is to play. Our target score is above **80.3 (Grade A)**.
@@ -164,7 +168,7 @@ To prove the game is successful, the team will test the final prototype using tw
 
 ---
 
-## 💻 9. GitHub Guide: How to Work on This Project
+## 9. GitHub Guide: How to Work on This Project
 
 To keep the game from breaking, **no one should make changes directly to the `main` branch.** Everyone will create their own branch, do their work there, and then ask for it to be merged into the main game.
 
