@@ -63,7 +63,7 @@ The game is built with a simple, clean simulation interface.
 | **Muhammad Khuzaimi Bin Ramli** | 307261 | **Lead Developer** | Writing the Ren'Py scripts, programming the time-loop system, managing variables, and managing GitHub. |
 | **Adam Haris Bin Amran** | 307106 | **UI/UX Designer** | Designing the interface mockups, drawing the fast-travel map, and setting up the screen layouts. |
 | **Muhammad Dany Iskandar Bin Mohd Shahir** | 307321 | **Lead Writer** | Drafting all dialogue between Alice and Aura, writing the riddles, and creating the text for clue notes. |
-| **Muhammad Hazri Bin Mohammad Zahir** | 306894 | **QA & Testing** | Playing the game to find errors, running Usability Testing, and gathering player feedback scores. |
+| **Muhammad Hazri Bin Mohammad Zahir** | 306894 | **QA & Audio Programmer** | Implement sound effect, running Usability Testing, and gathering player feedback scores. |
 
 ---
 
@@ -84,12 +84,12 @@ The game is built with a simple, clean simulation interface.
 - [x] Submit Proposal Document to Dr. Nurul Izzah.
 
 ### Phase 2: Basic Prototype (Due Weeks 8-10)
-- [ ] Code the starting scene (Alice waking up at 00:00).
-- [ ] Add the first introductory dialogue with Aura.
+- [x] Code the starting scene (Alice waking up at 00:00).
+- [x] Add the first introductory dialogue with Aura.
 - [ ] Build the interactive fast-travel map (Courtyard, Cafe, Playground).
 - [ ] Create the first working interaction (finding a clue on the ground).
 - [ ] Code the loop system so the game successfully resets upon failure.
-- [ ] Submit Progress Report and present the working prototype.
+- [x] Submit Progress Report and present the working prototype.
 
 ### Phase 3: Final Game & Evaluation (Due Weeks 13-14)
 - [ ] Add all remaining puzzles (Constellation, History, Timeline).
@@ -140,20 +140,22 @@ The game is built with a simple, clean simulation interface.
 - Write the riddles for the History puzzle and the Timeline puzzle.
 - Write the final ending conversation where Aura says goodbye and Alice wakes up in the real world.
 
-**Hazri (QA Tester & Evaluator)**
-- Your main job is to play the game, find bugs, and write the final testing report for the class.
+**Hazri (Audio Programmer & QA Tester)**
+- Your main job is to add the music, sound effects, and visual settings into the game code, and handle the final testing and written report. You must upload your code changes directly to GitHub.
 
-* **Week 1 (Phase 1):** 
-- Read through the project proposal and double-check that the 9 Usability Questions make sense before handing it in.
-* **Weeks 8–10 (Phase 2):** 
-- Play first version of the game.
-- Click every wrong answer on purpose to make sure the game successfully restarts.
-- Tell Adam if the map buttons are too small or confusing.
-* **Weeks 13–14 (Phase 3):** 
-- Give the finished game to 3-5 friends outside the group to play.
-- Ask them to fill out the System Usability Scale (SUS) survey.
-- Write the "Findings and Discussion" and "Limitations" sections of the final report based on what those testers said.
+* **Week 1 (Phase 1):**
+- Open the game's settings file and type in the basic info (the game's title, version number, and the "About" text).
+- Find free, non-copyrighted background music and sound effects. Create an audio folder in the game files, put the music there, and upload it to GitHub.
+* **Weeks 8–10 (Phase 2):**
+- Open the game's visual settings file and change the code to match Adam's design (change the font style, text size, and make the text box transparent).
+- Type the code to make the music and sound effects play at the right times during the story (like a clicking sound for buttons, or library music when the game starts).
+- Type the code to add simple "fade in" and "fade out" effects when the scenes change. Upload all your code changes to GitHub.
+* **Weeks 13–14 (Phase 3):**
+- Write the code for the final Credits Screen at the end of the game, listing all our names and where you got the audio files. Upload this final code to GitHub.
+- Give the finished game to 20 friends outside the group to play and ask them to fill out the usability survey.
+- Write the "Methodology", "Findings and Discussion", and "Limitations" sections of our final written report based on what those testers said.
 
+* WARNING: EVERY CHANGES MADE IN GAME DIRECTORY NEED TO REQUEST COMMIT IN ORDER TO BE ELIGIBLE FOR YOUR NAME INCLUDED INTO THIS GROUP FINAL REPORT.
 ---
 
 ## 📊 8. Evaluation Plan
