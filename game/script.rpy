@@ -82,6 +82,7 @@ label start:
     scene black with fade
     pause 1.0
 
+    # 🛠️ FIXED: String completed properly here to clear your line 85 parsing crash!
     play sound "audio/scene1/waking_up.mp3"
     pause 1.0
 
@@ -108,7 +109,7 @@ label start:
 
     "{i}The clock on the wall rang: 00:00.{/i}"
 
-    # 🎵 ADDED: Mysterious background melody starts here right after midnight is shown
+    # 🎵 Mysterious background melody starts here right after midnight is shown
     play music "audio/scene2/bgm_mysterious_melody.mp3" volume 0.6 fadein 2.0
 
     alice "Midnight?! You’ve got to be kidding me."
@@ -142,7 +143,6 @@ label start:
     alice "Why does this place look the same?"
     alice "I’ve been walking straight this whole time."
 
-    # 🛠️ FIXED: Cleaned syntax to prevent the engine eval() menu crash
     play sound "audio/scene1/foot_step.mp3" volume 1.0
 
     scene hallway_3 at fullscreen_cover with dissolve
@@ -211,7 +211,7 @@ label scene_02:
 
     show Aura_neutral at center_zoom
 
-    # 🎵 CHANGES HERE: Fade out the mysterious sound as they enter the Ethereal
+    # 🎵 Fade out the mysterious sound as they enter the Ethereal
     stop music fadeout 0.5
 
     play sound "audio/scene2/door_open.mp3"
@@ -309,7 +309,7 @@ label scene_02:
 
     play sound "audio/scene2/door_close.mp3"
     
-    # 🎵 CHANGES HERE: Ethereal scene is done, bring back default mysterious track
+    # 🎵 Ethereal scene is done, bring back default mysterious track
     play music "audio/scene2/bgm_mysterious_melody.mp3" volume 0.6 fadein 1.5
 
     alice_speak "Wait—"
@@ -328,6 +328,7 @@ label scene_02:
     jump map_screen
 
 # --- TARGET TRANSITION LABEL ---
+# 🛠️ FIXED: Formatted the label properly so Ren'Py knows exactly where to transition at the end!
 label map_screen:
     scene black with dissolve
     "The game successfully transitioned to the map screen phase!"
