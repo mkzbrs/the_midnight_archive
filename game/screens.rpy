@@ -188,6 +188,85 @@ screen arrange_interface_screen():
 
 
 
+# --- Text merge for Displaying Astronomy Page Screen ---
+transform text_emerge:
+    alpha 0.0
+    linear 1.5 alpha 1.0
+
+transform text_emerge_glow:
+    alpha 0.0
+    linear 1.5 alpha 1.0
+    pause 0.3
+    linear 0.5 alpha 0.7
+    linear 0.5 alpha 1.0
+    repeat
+
+# --- Astronomy Page Screen ---
+screen astronomy_page_reveal_screen():
+
+    modal True
+
+    # Dark overlay
+    add Solid("#000d")
+
+    # The torn page image, held vertically
+    add "images/scene4/astronomy_page_display.png":
+        xalign 0.5
+        yalign 0.5
+        zoom 2
+
+    default show_libra = False
+    default show_draco = False
+    default show_aries = False
+    default show_leo   = False
+
+    # Timers fire automatically the moment the screen opens
+    timer 0.5 action SetScreenVariable("show_libra", True)
+    timer 2.0 action SetScreenVariable("show_draco", True)
+    timer 3.5 action SetScreenVariable("show_aries", True)
+    timer 5.0 action SetScreenVariable("show_leo",   True)
+
+    # Libra
+    if show_libra:
+        text "1. Libra":
+            at text_emerge
+            xalign 0.40
+            yalign 0.25
+            size 70
+            color "#470c44"
+
+    # Draco
+    if show_draco:
+        text "2. Draco":
+            at text_emerge
+            xalign 0.60
+            yalign 0.38
+            size 70
+            color "#16074b"
+
+    # Aries
+    if show_aries:
+        text "3. Aries":
+            at text_emerge
+            xalign 0.40
+            yalign 0.55
+            size 70
+            color "#301108"
+
+    # Leo
+    if show_leo:
+        text "4. Leo":
+            at text_emerge
+            xalign 0.55
+            yalign 0.70
+            size 70
+            color "#0a3a1a"
+
+    # Continue button appears 2 seconds after Leo fades in
+    if show_leo:
+        timer 7.0 action Return()
+
+
 ################################################################################
 ## Styles
 ################################################################################
