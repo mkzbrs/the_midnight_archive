@@ -341,13 +341,248 @@ label scene_02:
     show Alice_neutral at left, enblur
     call chater_intro("Puzzle I", "THE STABILIZATION TRIAL")
     play sound "audio/scene2/quest_accept.mp3"
-    "{b}OBJECTIVE:{/b} Solve puzzles and gather Echoes."
+    show bookshelves at deblur
+    show Alice_neutral at left, deblur
 
-    jump map_screen
+    stop music fadeout 3.0
+    jump scene_03
 
-# --- TARGET TRANSITION LABEL ---
-# 🛠️ FIXED: Formatted the label properly so Ren'Py knows exactly where to transition at the end!
-label map_screen:
+# --- SCENE 3 STARTS HERE ---
+label scene_03:
+
+    scene bookshelves at fullscreen_cover with fade
+    play sound "audio/scene3/sfx_clock_tick_normal.mp3" loop
+    play music "audio/scene3/bgm_eerie_ambient.mp3" volume 0.5 fadein 2.0
+
+    alice "Ugh... my head. Did I... fall asleep? Was it all just a dream?"
+    alice "Maybe it's best if I just leave."
+    "{i}Alice starts walking, then pauses.{/i}"
+    alice "Wait, there's something in my pocket."
+
+    play sound "audio/scene3/sfx_bookmark_pulse.mp3"
+    $ cinematic = True
+    show archivist_bookmark at truecenter with dissolve
+
+    alice "It's the Archivist."
+
+    play sound "audio/scene3/sfx_aura_voice_echo.mp3"
+    show Aura_neutral at right with dissolve
+    aura "I told you, it is not a dream."
+
+    alice_speak "Aura? It... it's real?"
+
+    aura "Yes, it is reality. Focus, Alice. What do you need to do next?"
+
+    alice_speak "I don't know, tell me what to do."
+    hide Aura_neutral with dissolve
+    $ cinematic = True
+    show Aura_smile at right with dissolve
+
+    aura "Look to the relics of the past to stabilize the present. Walk through time, not away from..."
+
+    hide archivist_bookmark with dissolve
+    hide Aura_smile with dissolve
+    $ cinematic = False
+    "{i}Alice fumbles and drops the Archivist on the floor. Aura's voice cuts out abruptly.{/i}"
+
+    alice_speak "Aura? Where did you go?"
+
+    "{i}Alice grabs the Archivist from the floor.{/i}"
+    $ cinematic = True
+    show archivist_bookmark at truecenter with dissolve
+    show Aura_neutral at right with dissolve
+
+    play sound "audio/scene3/sfx_aura_voice_echo.mp3"
+    aura "I told you that you can only see and interact with me while holding the Archivist. Do not drop it again. Now, proceed to the specialized hallway section."
+    aura "Follow the path, Alice. Do not lose your focus, or the reality will fracture again. Keep your grip firm on the Archivist."
+
+    alice_speak "I understand. I'm moving toward the hallway now."
+
+    hide archivist_bookmark with dissolve
+    hide Aura_neutral with dissolve
+    $ cinematic = False
+    scene library2_puzzle1 at fullscreen_cover with dissolve
+
+    alice_speak "Hey, what is that on the table?"
+
+    show Aura_neutral at right with dissolve
+    aura "Pick those 3 items up and let's see what's the quest you need to do."
+
+    "{b}SYSTEM:{/b} Find and click on the oil lamp."
+    call screen find_lamp_screen
+
+    alice_speak "3? This is only one, let's find another 2."
+
+    scene library1_puzzle2 at fullscreen_cover with dissolve
+    "{b}SYSTEM:{/b} Find and click on the remaining 2 items."
+    call screen find_typewriter_cassette_screen
+
+    alice_speak "There they are."
+
+    alice "An ancient oil lamp, a mechanical typewriter, and a plastic cassette player..."
+    alice_speak "What do I need to do with this?"
+
+    aura "Swap those three items in chronological order."
+
+    hide Aura_neutral with dissolve
+
+    jump puzzle_1
+
+#----- Puzzle 1 label -----
+label puzzle_1:
+
+    $ selected_item = None
+    $ slot_1 = None
+    $ slot_2 = None
+    $ slot_3 = None
+
+    call screen arrange_interface_screen()
+
+    if _return == True:
+        play sound "audio/scene3/sfx_echo_stabilize.mp3"
+        alice_speak "You are right, we need to arrange it in this evolution timeline. I am a brilliant girl!"
+        $ cinematic = True
+        show echo at truecenter with dissolve
+        aura "Well reasoned, Alice. You have stabilized the first fragment. Now, proceed to the next area."
+
+        hide echo with dissolve
+        $ cinematic = False
+        play sound "audio/scene3/sfx_wall_dissolve.mp3"
+
+        scene black with dissolve
+        "{i}The back wall dissolves to reveal a real, physical path leading deeper into the school.{/i}"
+        
+        jump scene_04
+    else:
+        play sound "audio/scene3/sfx_reality_ripple.mp3"
+        with hpunch
+        alice "Hurm... that's wrong I think. Technology? Evolution? What is the true order?"
+        aura "I don't know, what's your idea?"
+        jump puzzle_1
+
+# --- SCENE 4 STARTS HERE ---
+label scene_04:
+    scene puzzle2_library at fullscreen_cover with dissolve
+
+    alice "This hallway just keeps going..."
+
+    "{b}SYSTEM:{/b} Find and click on the shining object."
+    call screen find_astronomy_page_screen
+
+    play sound "audio/scene4/sfx_paper_pickup.mp3"
+    show overlay_astronomy_page at truecenter with dissolve
+    "{b}SYSTEM:{/b} Torn Astronomy Page obtained."
+
+    alice "A page... it lists four constellations in a specific order: 1. Libra, 2. Draco, 3. Aries, and 4. Leo. This must be the sequence Aura mentioned."
+
+    hide overlay_astronomy_page with dissolve
+    play sound "audio/scene4/sfx_space_fold.mp3"
+    scene white with Fade(0.1, 0.0, 0.5)
+    scene school_courtyard at fullscreen_cover with fade
+
+    alice_speak "Wait what? How can I teleport here?"
+    alice_speak "Let me grab the Archivist and ask Aura."
+
+    play sound "audio/scene4/sfx_bookmark_activate.mp3"
+    $ cinematic = True
+    show archivist_bookmark at pulsing
+    
+    play sound "audio/scene4/sfx_aura_voice_echo.mp3"
+    show Aura_neutral at right with dissolve
+    aura "The page is a focal point of this memory, Alice. It pulled you to where the connection is strongest."
+    aura "Now, grip the Archivist. Focus on the sky. I will guide you through the sequence one by one. Do not rush."
+
+    hide archivist_bookmark
+    hide Aura_neutral
+    with dissolve
+
+    play music "audio/scene4/bgm_astral_ambient.mp3" volume 0.5 fadein 2.0
+    scene starry_sky at fullscreen_cover with dissolve
+
+label constellation_puzzle_loop:
+    scene starry_sky at fullscreen_cover with dissolve
+    $ cinematic = False
+    
+    # Step 1: Libra
+    $ cinematic = True
+    play sound "audio/scene4/sfx_aura_voice_echo.mp3"
+    aura "First, the Scales of Libra. Look for two pans held in balance, forming a wide triangle against the dark. Select them."
+    $ cinematic = False
+
+    call screen constellation_selection()
+    if _return != "libra":
+        jump constellation_fail
+
+    play sound "audio/scene4/sfx_blink.mp3"
+    $ cinematic = True
+    aura "Perfectly balanced. Proceed."
+    $ cinematic = False
+
+    # Step 2: Draco
+    $ cinematic = True
+    play sound "audio/scene4/sfx_aura_voice_echo.mp3"
+    aura "Now, the dragon, Draco. Trace the long, winding serpent of light that curls into a wide U-shape across the expanse."
+    $ cinematic = False
+
+    call screen constellation_selection()
+    if _return != "draco":
+        jump constellation_fail
+
+    play sound "audio/scene4/sfx_blink.mp3"
+    $ cinematic = True
+    aura "The dragon is tamed. Keep going."
+    $ cinematic = False
+
+    # Step 3: Aries
+    $ cinematic = True
+    play sound "audio/scene4/sfx_aura_voice_echo.mp3"
+    aura "Next, the ram, Aries. Seek the gentle arch of curved horns. It is the simplest shape, like a soft, singular stroke in the sky."
+    $ cinematic = False
+
+    call screen constellation_selection()
+    if _return != "aries":
+        jump constellation_fail
+
+    play sound "audio/scene4/sfx_blink.mp3"
+    $ cinematic = True
+    aura "The path is clear. One remains."
+    $ cinematic = False
+
+    # Step 4: Leo
+    $ cinematic = True
+    play sound "audio/scene4/sfx_aura_voice_echo.mp3"
+    aura "Finally, the lion, Leo. Look for the majestic mane—the brightest and most crowded cluster of stars commanding the night."
+    $ cinematic = False
+
+    call screen constellation_selection()
+    if _return != "leo":
+        jump constellation_fail
+
+    play sound "audio/scene4/sfx_blink.mp3"
+
+    # Success
+    $ cinematic = True
+    play sound "audio/scene4/sfx_echo_collect.mp3"
+    show echo at truecenter with dissolve
+
+    play sound "audio/scene4/sfx_aura_voice_echo.mp3"
+    aura "Well done, Alice. You have stabilized the second fragment. You are learning quickly."
+    $ cinematic = False
+    hide echo with dissolve
+
+
+    "{b}SYSTEM:{/b} Destination Unlocked: Next Puzzle Area"
+    
+    scene black with dissolve
+    jump scene_06
+
+label constellation_fail:
+    scene starry_sky at fullscreen_cover with dissolve
+    play sound "audio/scene4/sfx_thunder.mp3"
+    with vpunch
+    $ cinematic = True
+    aura "That is not the correct star, Alice! The memory is fracturing—hold the bookmark tight!"
+    
     scene black with dissolve
     pause 1.0
     jump constellation_puzzle_loop
