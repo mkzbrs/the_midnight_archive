@@ -29,3 +29,20 @@ transform enblur:
 transform deblur:
     blur 10
     linear 1 blur 0
+
+
+transform flip_horizontal:
+    xzoom -1.0
+    xanchor 1.0
+
+transform pulse_fadeout:
+    alpha 1.0
+    linear 0.4 alpha 0.3
+    linear 0.4 alpha 1.0
+    linear 0.4 alpha 0.3
+    linear 0.4 alpha 1.0
+    linear 0.4 alpha 0.3
+    linear 0.4 alpha 1.0
+    linear 0.4 alpha 0.3
+    linear 0.4 alpha 1.0
+    linear 1.5 alpha 0.0
