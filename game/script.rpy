@@ -88,8 +88,8 @@ screen find_astronomy_page_screen():
     imagebutton:
         xalign 0.5
         yalign 0.8
-        idle Transform("images/scene4/astronomy_page.png", zoom=0.5)
-        hover Transform("images/scene4/astronomy_page_glow.png", zoom=0.5)
+        idle Transform("images/scene4/astronomy_page.png", zoom=0.2)
+        hover Transform("images/scene4/astronomy_page_glow.png", zoom=0.2)
         action Return()
 
 screen constellation_selection():
@@ -507,7 +507,7 @@ label puzzle_1:
         alice_speak "You are right, we need to arrange it in this evolution timeline. I am a brilliant girl!"
         $ cinematic = True
         show echo at truecenter with dissolve
-        aura "Well reasoned, Alice. You have stabilized the fragment. Now, proceed to the next area."
+        aura "Well reasoned, Alice. You have stabilized the first fragment. Now, proceed to the next area."
 
         hide echo with dissolve
         $ cinematic = False
@@ -532,7 +532,6 @@ label scene_04:
 
     "{b}SYSTEM:{/b} Find and click on the shining object."
     call screen find_astronomy_page_screen
-    scene school_courtyard at fullscreen_cover
 
     play sound "audio/scene4/sfx_paper_pickup.mp3"
     show overlay_astronomy_page at truecenter with dissolve
@@ -541,6 +540,12 @@ label scene_04:
     alice "A page... it lists four constellations in a specific order: 1. Libra, 2. Draco, 3. Aries, and 4. Leo. This must be the sequence Aura mentioned."
 
     hide overlay_astronomy_page with dissolve
+    play sound "audio/scene4/sfx_space_fold.mp3"
+    scene white with Fade(0.1, 0.0, 0.5)
+    scene school_courtyard at fullscreen_cover with fade
+
+    alice_speak "Wait what? How can I teleport here?"
+    alice_speak "Let me grab the Archivist and ask Aura."
 
     play sound "audio/scene4/sfx_bookmark_activate.mp3"
     $ cinematic = True
@@ -548,18 +553,18 @@ label scene_04:
     
     play sound "audio/scene4/sfx_aura_voice_echo.mp3"
     show Aura_neutral at right with dissolve
-    aura "Alice! Grip the Archivist. Focus on the sky. I will guide you through the sequence one by one. Do not rush."
+    aura "The page is a focal point of this memory, Alice. It pulled you to where the connection is strongest."
+    aura "Now, grip the Archivist. Focus on the sky. I will guide you through the sequence one by one. Do not rush."
 
     hide archivist_bookmark
     hide Aura_neutral
     with dissolve
 
-    play sound "audio/scene4/sfx_space_fold.mp3"
-
     play music "audio/scene4/bgm_astral_ambient.mp3" volume 0.5 fadein 2.0
     scene starry_sky at fullscreen_cover with dissolve
 
 label constellation_puzzle_loop:
+    scene starry_sky at fullscreen_cover with dissolve
     $ cinematic = False
     
     # Step 1: Libra
@@ -620,18 +625,15 @@ label constellation_puzzle_loop:
     play sound "audio/scene4/sfx_blink.mp3"
 
     # Success
-    hide overlay_distorted_sky with dissolve
-    show overlay_night_sky_constellations at fullscreen_cover with dissolve
-
-    play sound "audio/scene4/sfx_echo_collect.mp3"
-    show item_first_echo at truecenter with dissolve
-    "{b}SYSTEM:{/b} FIRST ECHO OBTAINED"
-    hide item_first_echo with dissolve
-
     $ cinematic = True
+    play sound "audio/scene4/sfx_echo_collect.mp3"
+    show echo at truecenter with dissolve
+
     play sound "audio/scene4/sfx_aura_voice_echo.mp3"
-    aura "Well done, Alice. You have stabilized the first fragment. You are learning quickly."
+    aura "Well done, Alice. You have stabilized the second fragment. You are learning quickly."
     $ cinematic = False
+    hide echo with dissolve
+
 
     "{b}SYSTEM:{/b} Destination Unlocked: Next Puzzle Area"
     
@@ -639,6 +641,7 @@ label constellation_puzzle_loop:
     jump scene_06
 
 label constellation_fail:
+    scene starry_sky at fullscreen_cover with dissolve
     play sound "audio/scene4/sfx_thunder.mp3"
     with vpunch
     $ cinematic = True
