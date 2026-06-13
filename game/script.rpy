@@ -36,6 +36,12 @@ transform center_zoom:
     align (0.5, 0.5) 
     ease 1.5 zoom 2.5 alpha 0.0
 
+transform pulsing:
+    align (0.5, 0.5)
+    ease 1.0 zoom 1.05
+    ease 1.0 zoom 0.95
+    repeat
+
 # --- INTERACTIVE SCREENS ---
 screen find_clock_screen():
     imagebutton:
@@ -77,6 +83,43 @@ screen find_typewriter_cassette_screen():
             idle Transform("images/interface/puzzle1/cassette_player.png", zoom=0.4)
             hover Transform("images/interface/puzzle1/cassette_player_glow.png", zoom=0.4)
             action [SetScreenVariable("cassette_found", True), If(typewriter_found, Return())]
+
+screen find_astronomy_page_screen():
+    imagebutton:
+        xalign 0.5
+        yalign 0.8
+        idle Transform("images/scene4/astronomy_page.png", zoom=0.5)
+        hover Transform("images/scene4/astronomy_page_glow.png", zoom=0.5)
+        action Return()
+
+screen constellation_selection():
+    imagebutton:
+        xalign 0.2
+        yalign 0.3
+        idle Transform("images/scene4/libra.png", zoom=0.5)
+        hover Transform("images/scene4/libra_glow.png", zoom=0.5)
+        action Return("libra")
+    
+    imagebutton:
+        xalign 0.8
+        yalign 0.2
+        idle Transform("images/scene4/draco.png", zoom=0.5)
+        hover Transform("images/scene4/draco_glow.png", zoom=0.5)
+        action Return("draco")
+
+    imagebutton:
+        xalign 0.3
+        yalign 0.7
+        idle Transform("images/scene4/aries.png", zoom=0.5)
+        hover Transform("images/scene4/aries_glow.png", zoom=0.5)
+        action Return("aries")
+
+    imagebutton:
+        xalign 0.7
+        yalign 0.8
+        idle Transform("images/scene4/leo.png", zoom=0.5)
+        hover Transform("images/scene4/leo_glow.png", zoom=0.5)
+        action Return("leo")
 
 # --- SCENE 2 SETTINGS ---
 define alice_speak = Character("Alice")
@@ -481,5 +524,129 @@ label puzzle_1:
         aura "I don't know, what's your idea?"
         jump puzzle_1
 
+# --- SCENE 4 STARTS HERE ---
 label scene_04:
+    scene puzzle2_library at fullscreen_cover with dissolve
+
+    alice "This hallway just keeps going..."
+
+    "{b}SYSTEM:{/b} Find and click on the shining object."
+    call screen find_astronomy_page_screen
+    scene school_courtyard at fullscreen_cover
+
+    play sound "audio/scene4/sfx_paper_pickup.mp3"
+    show overlay_astronomy_page at truecenter with dissolve
+    "{b}SYSTEM:{/b} Torn Astronomy Page obtained."
+
+    alice "A page... it lists four constellations in a specific order: 1. Libra, 2. Draco, 3. Aries, and 4. Leo. This must be the sequence Aura mentioned."
+
+    hide overlay_astronomy_page with dissolve
+
+    play sound "audio/scene4/sfx_bookmark_activate.mp3"
+    $ cinematic = True
+    show archivist_bookmark at pulsing
+    
+    play sound "audio/scene4/sfx_aura_voice_echo.mp3"
+    show Aura_neutral at right with dissolve
+    aura "Alice! Grip the Archivist. Focus on the sky. I will guide you through the sequence one by one. Do not rush."
+
+    hide archivist_bookmark
+    hide Aura_neutral
+    with dissolve
+
+    play sound "audio/scene4/sfx_space_fold.mp3"
+
+    play music "audio/scene4/bgm_astral_ambient.mp3" volume 0.5 fadein 2.0
+    scene starry_sky at fullscreen_cover with dissolve
+
+label constellation_puzzle_loop:
+    $ cinematic = False
+    
+    # Step 1: Libra
+    $ cinematic = True
+    play sound "audio/scene4/sfx_aura_voice_echo.mp3"
+    aura "First, the Scales of Libra. Look for two pans held in balance, forming a wide triangle against the dark. Select them."
+    $ cinematic = False
+
+    call screen constellation_selection()
+    if _return != "libra":
+        jump constellation_fail
+
+    play sound "audio/scene4/sfx_blink.mp3"
+    $ cinematic = True
+    aura "Perfectly balanced. Proceed."
+    $ cinematic = False
+
+    # Step 2: Draco
+    $ cinematic = True
+    play sound "audio/scene4/sfx_aura_voice_echo.mp3"
+    aura "Now, the dragon, Draco. Trace the long, winding serpent of light that curls into a wide U-shape across the expanse."
+    $ cinematic = False
+
+    call screen constellation_selection()
+    if _return != "draco":
+        jump constellation_fail
+
+    play sound "audio/scene4/sfx_blink.mp3"
+    $ cinematic = True
+    aura "The dragon is tamed. Keep going."
+    $ cinematic = False
+
+    # Step 3: Aries
+    $ cinematic = True
+    play sound "audio/scene4/sfx_aura_voice_echo.mp3"
+    aura "Next, the ram, Aries. Seek the gentle arch of curved horns. It is the simplest shape, like a soft, singular stroke in the sky."
+    $ cinematic = False
+
+    call screen constellation_selection()
+    if _return != "aries":
+        jump constellation_fail
+
+    play sound "audio/scene4/sfx_blink.mp3"
+    $ cinematic = True
+    aura "The path is clear. One remains."
+    $ cinematic = False
+
+    # Step 4: Leo
+    $ cinematic = True
+    play sound "audio/scene4/sfx_aura_voice_echo.mp3"
+    aura "Finally, the lion, Leo. Look for the majestic mane—the brightest and most crowded cluster of stars commanding the night."
+    $ cinematic = False
+
+    call screen constellation_selection()
+    if _return != "leo":
+        jump constellation_fail
+
+    play sound "audio/scene4/sfx_blink.mp3"
+
+    # Success
+    hide overlay_distorted_sky with dissolve
+    show overlay_night_sky_constellations at fullscreen_cover with dissolve
+
+    play sound "audio/scene4/sfx_echo_collect.mp3"
+    show item_first_echo at truecenter with dissolve
+    "{b}SYSTEM:{/b} FIRST ECHO OBTAINED"
+    hide item_first_echo with dissolve
+
+    $ cinematic = True
+    play sound "audio/scene4/sfx_aura_voice_echo.mp3"
+    aura "Well done, Alice. You have stabilized the first fragment. You are learning quickly."
+    $ cinematic = False
+
+    "{b}SYSTEM:{/b} Destination Unlocked: Next Puzzle Area"
+    
+    scene black with dissolve
+    jump scene_06
+
+label constellation_fail:
+    play sound "audio/scene4/sfx_thunder.mp3"
+    with vpunch
+    $ cinematic = True
+    aura "That is not the correct star, Alice! The memory is fracturing—hold the bookmark tight!"
+    
+    scene black with dissolve
+    pause 1.0
+    jump constellation_puzzle_loop
+
+label scene_06:
     return
