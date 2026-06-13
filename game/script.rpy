@@ -56,6 +56,7 @@ image white = Solid("#ffffff")
 # --- SCENE 1 & 2 INTEGRATED ---
 label start:
     show border onlayer UI
+    show screen hud #For fast travel
 
     # SCENE 01: THE WAKE UP
 
