@@ -537,9 +537,10 @@ label scene_04:
     call screen find_astronomy_page_screen
 
     play sound "audio/scene4/sfx_paper_pickup.mp3"
+    show overlay_astronomy_page at truecenter with dissolve
     "{b}SYSTEM:{/b} Torn Astronomy Page obtained."
 
-    call screen astronomy_page_reveal_screen
+    alice "A page... it lists four constellations in a specific order: 1. Libra, 2. Draco, 3. Aries, and 4. Leo. This must be the sequence Aura mentioned."
 
     hide overlay_astronomy_page with dissolve
     play sound "audio/scene4/sfx_space_fold.mp3"
