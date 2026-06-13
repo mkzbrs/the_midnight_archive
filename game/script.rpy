@@ -538,9 +538,7 @@ label scene_04:
 
     call screen astronomy_page_reveal_screen
 
-    $ player_has_astronomy_page = True
-    alice_speak "Libra... Draco... Aries... Leo. These must mean something."
-
+    hide overlay_astronomy_page with dissolve
     play sound "audio/scene4/sfx_space_fold.mp3"
     scene white with Fade(0.1, 0.0, 0.5)
     scene school_courtyard at fullscreen_cover with fade
