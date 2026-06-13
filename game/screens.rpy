@@ -103,8 +103,9 @@ screen arrange_interface_screen():
 
     if slot_1 and slot_1 in PUZZLE1_ITEMS:
         add "images/interface/puzzle1/[slot_1].png":
-            xpos 400
-            ypos 300
+            xpos 648
+            ypos 410
+            zoom 0.3
 
     textbutton "Slot 1":
         xpos 690
@@ -121,8 +122,10 @@ screen arrange_interface_screen():
 
     if slot_2 and slot_2 in PUZZLE1_ITEMS:
         add "images/interface/puzzle1/[slot_2].png":
-            xpos 700
-            ypos 300
+            xpos 874
+            ypos 410
+            zoom 0.3
+
 
     textbutton "Slot 2":
         xpos 915
