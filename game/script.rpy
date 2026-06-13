@@ -48,6 +48,36 @@ screen find_clock_screen():
 
         action Return()
 
+screen find_lamp_screen():
+    imagebutton:
+        xalign 0.217  
+        yalign 0.716
+        
+        idle Transform("images/interface/puzzle1/ancient_oil_lamp.png", zoom=0.36)
+        hover Transform("images/interface/puzzle1/ancient_oil_lamp_glow.png", zoom=0.36) 
+
+        action Return()
+
+screen find_typewriter_cassette_screen():
+    default typewriter_found = False
+    default cassette_found = False
+
+    if not typewriter_found:
+        imagebutton:
+            xalign 0.71
+            yalign 0.62
+            idle Transform("images/interface/puzzle1/typewriter.png", zoom=0.469)
+            hover Transform("images/interface/puzzle1/typewriter_glow.png", zoom=0.469)
+            action [SetScreenVariable("typewriter_found", True), If(cassette_found, Return())]
+
+    if not cassette_found:
+        imagebutton:
+            xalign 0.538
+            yalign 0.65
+            idle Transform("images/interface/puzzle1/cassette_player.png", zoom=0.4)
+            hover Transform("images/interface/puzzle1/cassette_player_glow.png", zoom=0.4)
+            action [SetScreenVariable("cassette_found", True), If(typewriter_found, Return())]
+
 # --- SCENE 2 SETTINGS ---
 define alice_speak = Character("Alice")
 define aura = Character("Aura", color="#ffffff")
@@ -74,9 +104,6 @@ label start:
     pause 1.0
     
     scene library_noon at fullscreen_cover with fade
-
-    #Testing puzzle 1
-    call puzzle_1
 
     play music "audio/scene1/bird.mp3" volume 0.3 fadein 1.0
 
@@ -331,17 +358,96 @@ label scene_02:
 
     alice "…I’m back in the library."
 
-    play sound "audio/scene2/quest_accept.mp3"
-    "{b}OBJECTIVE:{/b} Solve puzzles and gather Echoes."
-
     show bookshelves at enblur
     show Alice_neutral at left, enblur
     call chater_intro("Puzzle I", "THE STABILIZATION TRIAL")
+    play sound "audio/scene2/quest_accept.mp3"
     show bookshelves at deblur
     show Alice_neutral at left, deblur
 
     stop music fadeout 3.0
     jump scene_03
+
+# --- SCENE 3 STARTS HERE ---
+label scene_03:
+
+    scene bookshelves at fullscreen_cover with fade
+    play sound "audio/scene3/sfx_clock_tick_normal.mp3" loop
+    play music "audio/scene3/bgm_eerie_ambient.mp3" volume 0.5 fadein 2.0
+
+    alice "Ugh... my head. Did I... fall asleep? Was it all just a dream?"
+    alice "Maybe it's best if I just leave."
+    "{i}Alice starts walking, then pauses.{/i}"
+    alice "Wait, there's something in my pocket."
+
+    play sound "audio/scene3/sfx_bookmark_pulse.mp3"
+    $ cinematic = True
+    show archivist_bookmark at truecenter with dissolve
+
+    alice "It's the Archivist."
+
+    play sound "audio/scene3/sfx_aura_voice_echo.mp3"
+    show Aura_neutral at right with dissolve
+    aura "I told you, it is not a dream."
+
+    alice_speak "Aura? It... it's real?"
+
+    aura "Yes, it is reality. Focus, Alice. What do you need to do next?"
+
+    alice_speak "I don't know, tell me what to do."
+    hide Aura_neutral with dissolve
+    $ cinematic = True
+    show Aura_smile at right with dissolve
+
+    aura "Look to the relics of the past to stabilize the present. Walk through time, not away from..."
+
+    hide archivist_bookmark with dissolve
+    hide Aura_smile with dissolve
+    $ cinematic = False
+    "{i}Alice fumbles and drops the Archivist on the floor. Aura's voice cuts out abruptly.{/i}"
+
+    alice_speak "Aura? Where did you go?"
+
+    "{i}Alice grabs the Archivist from the floor.{/i}"
+    $ cinematic = True
+    show archivist_bookmark at truecenter with dissolve
+    show Aura_neutral at right with dissolve
+
+    play sound "audio/scene3/sfx_aura_voice_echo.mp3"
+    aura "I told you that you can only see and interact with me while holding the Archivist. Do not drop it again. Now, proceed to the specialized hallway section."
+    aura "Follow the path, Alice. Do not lose your focus, or the reality will fracture again. Keep your grip firm on the Archivist."
+
+    alice_speak "I understand. I'm moving toward the hallway now."
+
+    hide archivist_bookmark with dissolve
+    hide Aura_neutral with dissolve
+    $ cinematic = False
+    scene library2_puzzle1 at fullscreen_cover with dissolve
+
+    alice_speak "Hey, what is that on the table?"
+
+    show Aura_neutral at right with dissolve
+    aura "Pick those 3 items up and let's see what's the quest you need to do."
+
+    "{b}SYSTEM:{/b} Find and click on the oil lamp."
+    call screen find_lamp_screen
+
+    alice_speak "3? This is only one, let's find another 2."
+
+    scene library1_puzzle2 at fullscreen_cover with dissolve
+    "{b}SYSTEM:{/b} Find and click on the remaining 2 items."
+    call screen find_typewriter_cassette_screen
+
+    alice_speak "There they are."
+
+    alice "An ancient oil lamp, a mechanical typewriter, and a plastic cassette player..."
+    alice_speak "What do I need to do with this?"
+
+    aura "Swap those three items in chronological order."
+
+    hide Aura_neutral with dissolve
+
+    jump puzzle_1
 
 #----- Puzzle 1 label -----
 label puzzle_1:
@@ -354,121 +460,26 @@ label puzzle_1:
     call screen arrange_interface_screen()
 
     if _return == True:
-        "The items click into place. Something unlocks."
-        jump puzzle_1_complete
+        play sound "audio/scene3/sfx_echo_stabilize.mp3"
+        alice_speak "You are right, we need to arrange it in this evolution timeline. I am a brilliant girl!"
+        $ cinematic = True
+        show echo at truecenter with dissolve
+        aura "Well reasoned, Alice. You have stabilized the fragment. Now, proceed to the next area."
+
+        hide echo with dissolve
+        $ cinematic = False
+        play sound "audio/scene3/sfx_wall_dissolve.mp3"
+
+        scene black with dissolve
+        "{i}The back wall dissolves to reveal a real, physical path leading deeper into the school.{/i}"
+        
+        jump scene_04
     else:
-        "That doesn't seem right..."
+        play sound "audio/scene3/sfx_reality_ripple.mp3"
+        with hpunch
+        alice "Hurm... that's wrong I think. Technology? Evolution? What is the true order?"
+        aura "I don't know, what's your idea?"
         jump puzzle_1
-label puzzle_1_complete:
-    "Puzzle 1 complete!"
-
-# --- SCENE 3 STARTS HERE ---
-label scene_03:
-
-    scene library_night at fullscreen_cover with fade
-    play sound "audio/scene3/sfx_clock_tick_normal.mp3" loop
-    play music "audio/scene3/bgm_eerie_ambient.mp3" volume 0.5 fadein 2.0
-
-    alice "Ugh... my head. Did I... fall asleep? Was it all just a dream?"
-    alice "Maybe it's best if I just leave."
-    "{i}Alice starts walking, then pauses.{/i}"
-    alice "Wait, there's something in my pocket."
-
-    play sound "audio/scene3/sfx_bookmark_pulse.mp3"
-    show archivist_bookmark at truecenter with dissolve
-
-    alice "It's the Archivist."
-
-    play sound "audio/scene3/sfx_aura_voice_echo.mp3"
-    aura "I told you, it is not a dream."
-
-    alice_speak "Aura? It... it's real?"
-
-    aura "Yes, it is reality. Focus, Alice. What do you need to do next?"
-
-    alice_speak "I don't know, tell me what to do."
-
-    aura "Look to the relics of the past to stabilize the present. Walk through time, not away from it."
-
-    hide archivist_bookmark with dissolve
-    "{i}Alice fumbles and drops the Archivist on the floor. Aura's voice cuts out abruptly.{/i}"
-
-    alice_speak "Aura? Where did you go?"
-
-    "{i}Alice grabs the Archivist from the floor.{/i}"
-    show archivist_bookmark at truecenter with dissolve
-
-    play sound "audio/scene3/sfx_aura_voice_echo.mp3"
-    aura "I told you that you can only see and interact with me while holding the Archivist. Do not drop it again. Now, proceed to the specialized hallway section."
-    aura "Follow the path, Alice. Do not lose your focus, or the reality will fracture again. Keep your grip firm on the Archivist."
-
-    alice_speak "I understand. I'm moving toward the hallway now."
-
-    hide archivist_bookmark with dissolve
-    scene collectors_hall at fullscreen_cover with dissolve
-
-    alice "An ancient oil lamp, a mechanical typewriter, and a plastic cassette player..."
-    alice_speak "What do I need to do with this?"
-
-    aura "Swap those three items in chronological order."
-
-    $ puzzle_step = 0
-
-label chronological_puzzle_loop:
-
-    call screen chronological_puzzle
-
-    $ item_choice = _return
-
-    if puzzle_step == 0:
-        if item_choice == "lamp":
-            play sound "audio/scene3/sfx_match_strike.mp3"
-            alice_speak "You are right, we need to arrange it in this evolution timeline. I am a brilliant girl!"
-            $ puzzle_step = 1
-            jump chronological_puzzle_loop
-        else:
-            play sound "audio/scene3/sfx_reality_ripple.mp3"
-            with hpunch
-            alice "Hurm... that's wrong I think. Technology? Evolution? What is the true order?"
-            aura "I don't know, what's your idea?"
-            jump chronological_puzzle_loop
-
-    elif puzzle_step == 1:
-        if item_choice == "typewriter":
-            play sound "audio/scene3/sfx_typewriter_clack.mp3"
-            $ puzzle_step = 2
-            jump chronological_puzzle_loop
-        else:
-            play sound "audio/scene3/sfx_reality_ripple.mp3"
-            with hpunch
-            alice "Hurm... that's wrong I think. Technology? Evolution? What is the true order?"
-            aura "I don't know, what's your idea?"
-            $ puzzle_step = 0
-            jump chronological_puzzle_loop
-
-    elif puzzle_step == 2:
-        if item_choice == "cassette":
-            play sound "audio/scene3/sfx_cassette_static.mp3"
-        else:
-            play sound "audio/scene3/sfx_reality_ripple.mp3"
-            with hpunch
-            alice "Hurm... that's wrong I think. Technology? Evolution? What is the true order?"
-            aura "I don't know, what's your idea?"
-            $ puzzle_step = 0
-            jump chronological_puzzle_loop
-
-    play sound "audio/scene3/sfx_echo_stabilize.mp3"
-    show echo at truecenter with dissolve
-
-    aura "Well reasoned, Alice. You have stabilized the fragment. Now, proceed to the next area."
-
-    hide echo with dissolve
-    play sound "audio/scene3/sfx_wall_dissolve.mp3"
-
-    scene black with dissolve
-    "{i}The back wall dissolves to reveal a real, physical path leading deeper into the school.{/i}"
-
-    jump scene_04
 
 label scene_04:
-return
+    return
