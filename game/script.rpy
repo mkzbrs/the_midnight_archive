@@ -651,4 +651,86 @@ label constellation_fail:
     jump constellation_puzzle_loop
 
 label scene_06:
+    scene bg_archive_veranda at fullscreen_cover with fade
+
+    play music "audio/scene6/bgm_solitude_calm.mp3" volume 0.5 fadein 2.0
+
+    alice "The heaviness of the archives vanishes. The air here is cool, sweet, and smells faintly of jasmine."
+
+    aura "Congrats, Alice. You've now completed the requirements to unlock the exit doors. Now watch this as I do the magic."
+
+    play sound "audio/scene6/sfx_magic_sparkle.mp3"
+
+    aura "Kachingggggg. A letter forms from those two echoes. These are the spells for you to read whenever you're ready to exit."
+
+    alice_speak "Wait, Aura. I don't want to say goodbye to you just like that."
+
+    show Aura_smile at right with dissolve
+
+    aura "Sit, Alice. You have earned this silence."
+
+    "{i}Alice sits.{/i}"
+    play sound "audio/scene6/sfx_tea_pour.mp3"
+
+    alice_speak "I... I don't know how to thank you. Or how to thank myself."
+
+    aura "Consider it a debt paid to the library. Without you, I would have drifted in the static forever."
+
+    alice_speak "Who are you, Aura? Truly?"
+
+    hide Aura_smile
+    show Aura_neutral at right
+    with dissolve
+
+    aura "I was an archivist here, a century ago. When the first crack appeared in the record, I tried to mend it using the Echoes. I failed, and the distortion consumed me. I became a ghost of my own duty, tethered to the bookmark you hold."
+
+    alice_speak "You've been here for a hundred years?"
+
+    aura "Time has little meaning in a loop. But today, it finally ends."
+
+    "{i}Aura pushes a cup toward Alice.{/i}"
+
+    aura "Drink. It is the last of the jasmine I harvested before the silence took the garden."
+
+    "{i}Alice takes a sip.{/i}"
+    alice_speak "It's... warm. It's the first thing that's felt real all night."
+
+    aura "That is because you are waking up, Alice. The loop is broken."
+
+    alice_speak "Will I see you again?"
+
+    aura "The library has many secrets, but this specific memory will fade. Once you leave, the distortion resets to a normal night. You will go back to your studies, and I... I will finally find rest."
+
+    show Aura_neutral at pulsing
+
+    aura "Goodbye, Alice. Thank you for walking through the dark with me."
+
+    play sound "audio/scene6/sfx_wind_chime.mp3"
+    scene white with Fade(2.0, 0.0, 2.0)
+
+    jump scene_07
+
+label scene_07:
+    scene bg_library_exit_door at fullscreen_cover with dissolve
+
+    alice_speak "It's time."
+
+    play sound "audio/scene7/sfx_magic_sparkle.mp3"
+    alice_speak "Through the archives, past the tide, open the path where memories hide."
+
+    play sound "audio/scene7/sfx_door_opening.mp3"
+    scene white with Fade(0.5, 1.0, 0.5)
+
+    scene bg_library_desk_start at fullscreen_cover with fade
+
+    play sound "audio/scene7/sfx_clock_chime.mp3"
+
+    alice_speak "Seven... seven o'clock? It was all just a dream?"
+
+    "{i}Alice feels a sense of relief, gathers her belongings, and stands up quickly.{/i}"
+
+    alice_speak "Enough studying for tonight. It's time to go home."
+
+    scene black with fade
+
     return
