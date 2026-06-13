@@ -6,6 +6,7 @@ image Alice_scared = Transform("images/scene2/Alice_scared.png", zoom=1.5, yoffs
 image Alice_surprised = Transform("images/scene2/Alice_surprised.png", zoom=1.5, yoffset=300)
 image Alice_curious = Transform("images/scene2/Alice_curious.png", zoom=1.5, yoffset=300)
 image Alice_smile = Transform("images/scene2/Alice_smile.png", zoom=1.5, yoffset=300)
+image Alice_crying = Transform("images/scene2/Alice_crying.png", zoom=1.5, yoffset=300)
 
 # --- AURA SPRITES ---
 image Aura_neutral = Transform("images/scene2/Aura_neutral.png", zoom=1.5, yoffset=300)
@@ -416,7 +417,7 @@ label scene_03:
 
     scene bookshelves at fullscreen_cover with fade
     play sound "audio/scene3/sfx_clock_tick_normal.mp3" loop
-    play music "audio/scene3/bgm_eerie_ambient.mp3" volume 0.5 fadein 2.0
+    play music "audio/scene6/mystery_music.mp3" volume 0.3 fadein 2.0
 
     alice "Ugh... my head. Did I... fall asleep? Was it all just a dream?"
     alice "Maybe it's best if I just leave."
@@ -528,6 +529,8 @@ label puzzle_1:
 label scene_04:
     scene puzzle2_library at fullscreen_cover with dissolve
 
+    play music "audio/scene6/mystery_music.mp3" volume 0.3 fadein 2.0
+
     alice "This hallway just keeps going..."
 
     "{b}SYSTEM:{/b} Find and click on the shining object."
@@ -559,10 +562,10 @@ label scene_04:
     hide Aura_neutral
     with dissolve
 
-    play music "audio/scene4/bgm_astral_ambient.mp3" volume 0.5 fadein 2.0
     scene starry_sky at fullscreen_cover with dissolve
 
 label constellation_puzzle_loop:
+    play music "audio/scene6/chill_music_2.mp3" volume 0.2 fadein 2.0
     scene starry_sky at fullscreen_cover with dissolve
     $ cinematic = False
     
@@ -634,7 +637,7 @@ label constellation_puzzle_loop:
     hide echo with dissolve
 
 
-    "{b}SYSTEM:{/b} Destination Unlocked: Next Puzzle Area"
+    "{b}SYSTEM:{/b} Final Puzzle Solved!"
     
     scene black with dissolve
     jump scene_06
@@ -651,26 +654,47 @@ label constellation_fail:
     jump constellation_puzzle_loop
 
 label scene_06:
-    scene bg_archive_veranda at fullscreen_cover with fade
+    scene bg_archive_veranda_empty at fullscreen_cover with fade
 
-    play music "audio/scene6/bgm_solitude_calm.mp3" volume 0.5 fadein 2.0
+    play music "audio/scene7/chill_music.mp3" volume 0.3 fadein 2.0 loop
+
+    show Alice_neutral at right, flip_horizontal with dissolve:
+        xalign 0.9
 
     alice "The heaviness of the archives vanishes. The air here is cool, sweet, and smells faintly of jasmine."
 
-    aura "Congrats, Alice. You've now completed the requirements to unlock the exit doors. Now watch this as I do the magic."
+    show Aura_smile at left with dissolve
 
-    play sound "audio/scene6/sfx_magic_sparkle.mp3"
+    aura "Congrats, Alice. You've now completed the requirements to unlock the exit doors."
+
+    aura "Now watch this as I do the magic."
+
+    show echo at truecenter with dissolve
+
+    play sound "audio/scene2/sfx_magical_glow.mp3"
+    show white with Fade(0.1, 0.0, 0.5)
+
+    scene bg_archive_veranda_empty at fullscreen_cover with dissolve
+
+    show letter at truecenter with dissolve
+    
+    show Aura_smile at left
+
+    show Alice_neutral at right, flip_horizontal:
+        xalign 0.9
 
     aura "Kachingggggg. A letter forms from those two echoes. These are the spells for you to read whenever you're ready to exit."
 
     alice_speak "Wait, Aura. I don't want to say goodbye to you just like that."
 
-    show Aura_smile at right with dissolve
-
     aura "Sit, Alice. You have earned this silence."
+
+    scene black with dissolve
 
     "{i}Alice sits.{/i}"
     play sound "audio/scene6/sfx_tea_pour.mp3"
+
+    scene bg_archive_veranda at fullscreen_cover with dissolve
 
     alice_speak "I... I don't know how to thank you. Or how to thank myself."
 
@@ -678,34 +702,77 @@ label scene_06:
 
     alice_speak "Who are you, Aura? Truly?"
 
-    hide Aura_smile
-    show Aura_neutral at right
-    with dissolve
+    scene bg_archive_veranda at fullscreen_cover, enblur with dissolve
+    show Aura_smile at left with dissolve
 
-    aura "I was an archivist here, a century ago. When the first crack appeared in the record, I tried to mend it using the Echoes. I failed, and the distortion consumed me. I became a ghost of my own duty, tethered to the bookmark you hold."
+    aura "I was an archivist here, a century ago."
+
+    aura "When the first crack appeared in the record, I tried to mend it using the Echoes."
+
+    hide Aura_smile
+    show Aura_sad at left with dissolve
+    
+    aura "I failed, and the distortion consumed me. I became a ghost of my own duty, tethered to the bookmark you hold."
+
+    show Alice_surprised at right, flip_horizontal with dissolve:
+        xalign 0.9
 
     alice_speak "You've been here for a hundred years?"
 
+    hide Aura_sad
+    show Aura_smile at left with dissolve
     aura "Time has little meaning in a loop. But today, it finally ends."
 
-    "{i}Aura pushes a cup toward Alice.{/i}"
+    hide Alice_surprised
+    show Alice_neutral at right, flip_horizontal with dissolve:
+        xalign 0.9
 
+    "{i}Aura invites Alice to drink the prepared tea.{/i}"
+
+    hide Aura_smile
+    show Aura_relieved at left with dissolve
     aura "Drink. It is the last of the jasmine I harvested before the silence took the garden."
 
     "{i}Alice takes a sip.{/i}"
+
+    hide Aura_relieved
+    show Aura_smile at left with dissolve
+    aura "How does it taste?"
+
+    hide Alice_neutral
+    show Alice_smile at right, flip_horizontal with dissolve:
+        xalign 0.9
+
     alice_speak "It's... warm. It's the first thing that's felt real all night."
 
     aura "That is because you are waking up, Alice. The loop is broken."
 
+    hide Alice_smile
+    show Alice_neutral at right, flip_horizontal with dissolve:
+        xalign 0.9
+
     alice_speak "Will I see you again?"
 
-    aura "The library has many secrets, but this specific memory will fade. Once you leave, the distortion resets to a normal night. You will go back to your studies, and I... I will finally find rest."
+    aura "The library has many secrets, but this specific memory will fade."
 
-    show Aura_neutral at pulsing
+    aura "Once you leave, the distortion resets to a normal night."
+
+    aura "You will go back to your studies, and I... I will finally find rest."
+
+    hide Alice_neutral
+    show Alice_crying at right, flip_horizontal with dissolve:
+        xalign 0.9
+
+    alice "So this is a goodbye?"
+
+    hide Aura_smile
+    show Aura_relieved at pulsing, left
+
+    aura "Yes."
 
     aura "Goodbye, Alice. Thank you for walking through the dark with me."
 
-    play sound "audio/scene6/sfx_wind_chime.mp3"
+    stop music fadeout 3.0
     scene white with Fade(2.0, 0.0, 2.0)
 
     jump scene_07
@@ -713,23 +780,34 @@ label scene_06:
 label scene_07:
     scene bg_library_exit_door at fullscreen_cover with dissolve
 
+    
+
     alice_speak "It's time."
 
     play sound "audio/scene7/sfx_magic_sparkle.mp3"
     alice_speak "Through the archives, past the tide, open the path where memories hide."
 
-    play sound "audio/scene7/sfx_door_opening.mp3"
+    play sound "audio/scene2/door_open.mp3"
+
     scene white with Fade(0.5, 1.0, 0.5)
 
     scene bg_library_desk_start at fullscreen_cover with fade
 
+    play audio "audio/scene7/chatter.mp3" volume 2.0 fadein 1 loop
+    
     play sound "audio/scene7/sfx_clock_chime.mp3"
 
+    alice_speak "..."
+    
     alice_speak "Seven... seven o'clock? It was all just a dream?"
+
+    "{i}Alice realized she slept the whole night in the library.{/i}"
+    
+    "{i}The library has now filled with people.{/i}"
 
     "{i}Alice feels a sense of relief, gathers her belongings, and stands up quickly.{/i}"
 
-    alice_speak "Enough studying for tonight. It's time to go home."
+    alice_speak "Enough studying. It's time to go home."
 
     scene black with fade
 
