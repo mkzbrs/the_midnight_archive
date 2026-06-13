@@ -4,6 +4,189 @@
 
 init offset = -1
 
+#Fast Travel Interface
+screen fast_travel_screen():
+    modal True
+
+    # Dim background (optional but recommended)
+    add Solid("#0008")
+
+
+    # Centered UI panel
+    add "images/interface/travel/fast_travel_ui.png":
+        xalign 0.5
+        yalign 0.5
+        zoom 2.0
+  
+    # Cancel button
+    imagebutton:
+        idle "images/interface/travel/cancel_button.png"
+        hover "images/interface/travel/cancel_button_glow.png"
+        xpos 600
+        ypos 640
+        at Transform(zoom=0.6)
+        action Return()
+
+    # Teleport button
+    imagebutton:
+        idle "images/interface/travel/travel_button.png"
+        hover "images/interface/travel/travel_button_glow.png"
+        xpos 950
+        ypos 630
+        at Transform(zoom=0.65)
+        action Jump("teleport_label")
+
+#Input to handle fast travel keypress
+screen hud():
+    key "m" action Function(renpy.call_in_new_context, "open_fast_travel")
+
+#Called by the hud screen to handle fast travel output (TRAVEL/CANCEL).
+label open_fast_travel:
+    window hide
+    call screen fast_travel_screen
+    window show
+    if _return == "travel":
+        jump teleport_label
+    return
+
+
+# puzzle 1 arrange Interface
+define CORRECT_ORDER = ["ancient_oil_lamp", "typewriter", "cassette_player"]
+
+screen arrange_interface_screen():
+
+    modal True
+
+    add Solid("#0008")
+
+    add "images/interface/puzzle1/arrange_interface.png":
+        xalign 0.5
+        yalign 0.4
+        zoom 1.2
+
+    # ── ITEM SELECTOR ──────────────────────────────
+
+    imagebutton:
+        idle "images/interface/puzzle1/typewriter.png"
+        hover "images/interface/puzzle1/typewriter_glow.png"
+        xpos 100
+        ypos 200
+        at Transform(zoom=0.4)
+        action SetVariable("selected_item", "typewriter")
+
+    imagebutton:
+        idle "images/interface/puzzle1/cassette_player.png"
+        hover "images/interface/puzzle1/cassette_player_glow.png"
+        xpos 100
+        ypos 400
+        at Transform(zoom=0.4)
+        action SetVariable("selected_item", "cassette_player")
+
+    imagebutton:
+        idle "images/interface/puzzle1/ancient_oil_lamp.png"
+        hover "images/interface/puzzle1/ancient_oil_lamp_glow.png"
+        xpos 100
+        ypos 600
+        at Transform(zoom=0.4)
+        action SetVariable("selected_item", "ancient_oil_lamp")
+
+    # ── SELECTED ITEM INDICATOR ────────────────────
+
+    if selected_item:
+        text "Selected: [selected_item]":
+            xpos 100
+            ypos 870
+            color "#ffffff"
+            size 40
+
+    # ── SLOT 1 ─────────────────────────────────────
+
+    if slot_1 and slot_1 in PUZZLE1_ITEMS:
+        add "images/interface/puzzle1/[slot_1].png":
+            xpos 648
+            ypos 410
+            zoom 0.3
+
+    textbutton "Slot 1":
+        xpos 690
+        ypos 410
+        xsize 180
+        ysize 180
+        action If(
+            selected_item is not None,
+            SetVariable("slot_1", selected_item),
+            NullAction()
+        )
+
+    # ── SLOT 2 ─────────────────────────────────────
+
+    if slot_2 and slot_2 in PUZZLE1_ITEMS:
+        add "images/interface/puzzle1/[slot_2].png":
+            xpos 874
+            ypos 410
+            zoom 0.3
+
+
+    textbutton "Slot 2":
+        xpos 915
+        ypos 410
+        xsize 180
+        ysize 180
+        action If(
+            selected_item is not None,
+            SetVariable("slot_2", selected_item),
+            NullAction()
+        )
+
+    # ── SLOT 3 ─────────────────────────────────────
+
+    if slot_3 and slot_3 in PUZZLE1_ITEMS:
+        add "images/interface/puzzle1/[slot_3].png":
+            xpos 1100
+            ypos 410
+            zoom 0.3
+
+    textbutton "Slot 3":
+        xpos 1150
+        ypos 410
+        xsize 180
+        ysize 180
+        action If(
+            selected_item is not None,
+            SetVariable("slot_3", selected_item),
+            NullAction()
+        )
+
+    # ── ARRANGE BUTTON ─────────────────────────────
+
+    imagebutton:
+        idle "images/interface/puzzle1/arrange_button.png"
+        hover "images/interface/puzzle1/arrange_button_glow.png"
+        xpos 970
+        ypos 700
+        at Transform(zoom=0.6)
+        action If(
+            [slot_1, slot_2, slot_3] == CORRECT_ORDER,
+            Return(True),
+            Return(False)
+        )
+
+    # ── CLEAR BUTTON ───────────────────────────────
+
+    imagebutton:
+        idle "images/interface/puzzle1/clear_button.png"
+        hover "images/interface/puzzle1/clear_button_glow.png"
+        xpos 600
+        ypos 695
+        at Transform(zoom=0.63)
+        action [
+            SetVariable("slot_1", None),
+            SetVariable("slot_2", None),
+            SetVariable("slot_3", None),
+            SetVariable("selected_item", None)
+        ]
+
+
 
 ################################################################################
 ## Styles

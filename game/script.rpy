@@ -39,6 +39,12 @@ transform center_zoom:
     align (0.5, 0.5) 
     ease 1.5 zoom 2.5 alpha 0.0
 
+transform pulsing:
+    align (0.5, 0.5)
+    ease 1.0 zoom 1.05
+    ease 1.0 zoom 0.95
+    repeat
+
 # --- INTERACTIVE SCREENS ---
 screen find_clock_screen():
     imagebutton:
@@ -51,163 +57,25 @@ screen find_clock_screen():
 
         action Return()
 
-# --- SCENE 06 & 07: CHRONOS SCALE PUZZLE SCREEN ---
-screen chronos_scale_screen():
-    modal True
-
-    frame:
-        xalign 0.5
-        yalign 0.42
-        xsize 900
-        ysize 420
-        background Frame("images/scene7/scale_ui_bg.png", 20, 20)
-        padding (30, 30)
-
-        vbox:
-            spacing 20
-
-            text "⚖  THE CHRONOS SCALE" style "scale_title"
-
-            hbox:
-                spacing 20
-                xalign 0.5
-
-                # LEFT PLATTER
-                vbox:
-                    spacing 8
-                    xsize 260
-
-                    text "LEFT PLATTER" style "platter_label"
-
-                    frame:
-                        background "#1a0f30cc"
-                        xsize 260
-                        ysize 160
-                        padding (12, 12)
-
-                        vbox:
-                            spacing 6
-
-                            for w in scale_left:
-                                textbutton "[w['label']]" style "placed_weight_btn":
-                                    action [RemoveFromList(scale_left, w), Function(renpy.restart_interaction)]
-
-                    text "Total: [left_total:.1f] units" style "platter_sum"
-
-                # BEAM / NEEDLE
-                vbox:
-                    xsize 100
-                    yalign 0.5
-                    xalign 0.5
-                    spacing 6
-
-                    text "⬆" style "needle_label" xalign 0.5
-                    text "[needle_text]" style "needle_status" xalign 0.5
-
-                # RIGHT PLATTER
-                vbox:
-                    spacing 8
-                    xsize 260
-
-                    text "RIGHT PLATTER" style "platter_label"
-
-                    frame:
-                        background "#1a0f30cc"
-                        xsize 260
-                        ysize 160
-                        padding (12, 12)
-
-                        vbox:
-                            spacing 6
-
-                            for w in scale_right:
-                                textbutton "[w['label']]" style "placed_weight_btn":
-                                    action [RemoveFromList(scale_right, w), Function(renpy.restart_interaction)]
-
-                    text "Total: [right_total:.1f] units" style "platter_sum"
-
-            # WEIGHT BANK
-            hbox:
-                spacing 10
-                xalign 0.5
-
-                for w in weights_bank:
-                    if w not in scale_left and w not in scale_right:
-                        hbox:
-                            spacing 4
-                            textbutton "[w['label']] → L" style "weight_btn":
-                                action [AppendToList(scale_left, w), Function(renpy.restart_interaction)]
-                            textbutton "→ R" style "weight_btn_small":
-                                action [AppendToList(scale_right, w), Function(renpy.restart_interaction)]
-
-            # CONFIRM BUTTON (only shows when balanced)
-            if left_total == right_total and left_total > 0:
-                textbutton "⚙  Balance confirmed — unlock the gear" style "confirm_btn" xalign 0.5:
-                    action Return(True)
-
-# --- STYLES FOR SCALE UI ---
-style scale_title:
-    color "#c4b5fd"
-    size 22
-    bold True
-    xalign 0.5
-
-style platter_label:
-    color "#a78bfa"
-    size 13
-    xalign 0.5
-
-style platter_sum:
-    color "#e2d9f3"
-    size 15
-    xalign 0.5
-
-style placed_weight_btn:
-    background "#3b1f6acc"
-    hover_background "#6d28d9cc"
-    color "#f9a8d4"
-    size 12
-    padding (6, 4)
-
-style weight_btn:
-    background "#1f1245cc"
-    hover_background "#4c1d95cc"
-    color "#fde68a"
-    size 12
-    padding (6, 5)
-
-style weight_btn_small:
-    background "#1f1245cc"
-    hover_background "#4c1d95cc"
-    color "#fde68a"
-    size 12
-    padding (6, 5)
-
-style confirm_btn:
-    background "#065f46cc"
-    hover_background "#047857cc"
-    color "#6ee7b7"
-    size 14
-    bold True
-    padding (14, 8)
-
-style needle_label:
-    color "#a78bfa"
-    size 24
-
-style needle_status:
-    color "#e2d9f3"
-    size 11
-    xalign 0.5
-
 # --- SCENE 2 SETTINGS ---
 define alice_speak = Character("Alice")
 define aura = Character("Aura", color="#ffffff")
 image white = Solid("#ffffff")
 
+
+# --- PUZZLE 1 SETTINGS ---
+define PUZZLE1_ITEMS = ["ancient_oil_lamp", "typewriter", "cassette_player"]
+define PUZZLE1_CORRECT = ["ancient_oil_lamp", "typewriter", "cassette_player"]
+
+default selected_item = None
+default slot_1 = None
+default slot_2 = None
+default slot_3 = None
+
 # --- SCENE 1 & 2 INTEGRATED ---
 label start:
     show border onlayer UI
+    show screen hud #For fast travel, relocate this to be after the ethereal.
 
     # SCENE 01: THE WAKE UP
 
@@ -469,14 +337,22 @@ label scene_02:
 
     alice "…I'm back in the library."
 
+    show bookshelves at enblur
+    show Alice_neutral at left, enblur
+    call chater_intro("Puzzle I", "THE STABILIZATION TRIAL")
     play sound "audio/scene2/quest_accept.mp3"
     "{b}OBJECTIVE:{/b} Solve puzzles and gather Echoes."
 
     jump map_screen
 
+# --- TARGET TRANSITION LABEL ---
+# 🛠️ FIXED: Formatted the label properly so Ren'Py knows exactly where to transition at the end!
 label map_screen:
     scene black with dissolve
-    "The game successfully transitioned to the map screen phase!"
+    pause 1.0
+    jump constellation_puzzle_loop
+
+label scene_06:
     return
 
 

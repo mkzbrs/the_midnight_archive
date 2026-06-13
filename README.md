@@ -1,4 +1,4 @@
-# 🕰️ The Midnight Archive
+# The Midnight Archive
 
 - **Universiti Utara Malaysia**
 - **Course:** STTHK2123 Interaction System and Tools (Session A252) 
@@ -7,7 +7,7 @@
 
 ---
 
-## 📖 1. Project Summary & Objectives
+## 1. Project Summary & Objectives
 
 Currently, many narrative games allow players to progress by just clicking randomly without understanding the story. "Midnight Archive" aims to solve this by creating a dialogue-based mystery game where every choice matters. 
 
@@ -21,7 +21,7 @@ The game relies on a time-loop system. If the player makes a logical mistake, th
 
 ---
 
-## 🎭 2. Story Plot & Core Mechanics
+## 2. Story Plot & Core Mechanics
 
 ### The Story
 The year is 2030. The main character, Alice, is an exhausted student who falls asleep in the library. She wakes up at exactly midnight (00:00) to find the school completely locked and frozen in time. She is trapped in a "Temporal Blindspot"—a gap in reality where time and memory are unstable. 
@@ -39,7 +39,7 @@ She meets a mysterious girl named Aura, a "Memory Keeper". Aura asks Alice to he
 
 ---
 
-## 🕹️ 3. Interaction System & User Flow
+## 3. Interaction System & User Flow
 
 The game is built with a simple, clean simulation interface. 
 * **Explicit Inputs:** Clicking on dialogue choices to answer Aura. 
@@ -49,14 +49,14 @@ The game is built with a simple, clean simulation interface.
 
 ---
 
-## 🎯 4. Target Audience
+## 4. Target Audience
 * **Teenagers and Young Adults (Ages 16-25):** Users familiar with visual novels and interactive storytelling.
 * **Mystery Solvers:** Players who enjoy narrative games that require critical decision-making.
 * **Challenge Seekers:** Users who do not mind failing and are ready to overcome difficulties through trial and error.
 
 ---
 
-## 👨‍💻 5. Team Roles & Responsibilities
+## 5. Team Roles & Responsibilities
 
 | Name | Matric No. | Role | Responsibilities |
 | :--- | :--- | :--- | :--- |
@@ -67,7 +67,7 @@ The game is built with a simple, clean simulation interface.
 
 ---
 
-## 🛠️ 6. Software & Development Tools
+## 6. Software & Development Tools
 * **Ren'Py:** The main visual novel engine used to build the game.
 * **GitHub:** Used to store the game files online so the team can work together without deleting each other's progress.
 * **Visual Studio Code:** The code editor used to write the game scripts.
@@ -76,7 +76,7 @@ The game is built with a simple, clean simulation interface.
 
 ---
 
-## 📅 7. Development Checklist & Status Tracker
+## 7. Development Checklist & Status Tracker
 
 ### Phase 1: Project Proposal (Due Week 4)
 - [x] Define Target Users & Objectives.
@@ -160,7 +160,7 @@ The game is built with a simple, clean simulation interface.
 STRICT POLICY: NO COMMITS = NO CREDIT. YOU MUST PUSH ALL YOUR CHANGES TO THE GITHUB REPOSITORY. EVERY COMMIT MUST BE MADE ON YOUR OWN PERSONAL BRANCH "YOURNAME-BRANCH" AND YOU MUST SUBMIT A PULL REQUEST TO MERGE IT. ONLY PULL REQUESTS WILL BE CALCULATED AS VALID COMMITS. IF YOU HAVE ZERO MERGE REQUESTS, YOUR NAME WILL BE PERMANENTLY REMOVED FROM THE FINAL PROJECT REPORT.
 ---
 
-## 📊 8. Evaluation Plan
+## 8. Evaluation Plan
 
 To prove the game is successful, the team will test the final prototype using two methods:
 1. **System Usability Scale (SUS):** A 10-question survey given to testers to measure how easy the game is to play. Our target score is above **80.3 (Grade A)**.
@@ -168,7 +168,7 @@ To prove the game is successful, the team will test the final prototype using tw
 
 ---
 
-## 💻 9. GitHub Guide: How to Work on This Project
+## 9. GitHub Guide: How to Work on This Project
 
 To keep the game from breaking, **no one should make changes directly to the `main` branch.** Everyone will create their own branch, do their work there, and then ask for it to be merged into the main game.
 
