@@ -445,6 +445,7 @@ label scene_03:
 
     aura "Look to the relics of the past to stabilize the present. Walk through time, not away from..."
 
+    stop sound fadeout 0.5
     hide archivist_bookmark with dissolve
     hide Aura_smile with dissolve
     $ cinematic = False
@@ -457,7 +458,6 @@ label scene_03:
     show archivist_bookmark at truecenter with dissolve
     show Aura_neutral at right with dissolve
 
-    play sound "audio/scene3/sfx_aura_voice_echo.mp3"
     aura "I told you that you can only see and interact with me while holding the Archivist. Do not drop it again. Now, proceed to the specialized hallway section."
     aura "Follow the path, Alice. Do not lose your focus, or the reality will fracture again. Keep your grip firm on the Archivist."
 
@@ -519,7 +519,7 @@ label puzzle_1:
         
         jump scene_04
     else:
-        play sound "audio/scene3/sfx_reality_ripple.mp3"
+ #       play sound "audio/scene3/sfx_reality_ripple.mp3"
         with hpunch
         alice "Hurm... that's wrong I think. Technology? Evolution? What is the true order?"
         aura "I don't know, what's your idea?"
@@ -537,10 +537,9 @@ label scene_04:
     call screen find_astronomy_page_screen
 
     play sound "audio/scene4/sfx_paper_pickup.mp3"
-    show overlay_astronomy_page at truecenter with dissolve
     "{b}SYSTEM:{/b} Torn Astronomy Page obtained."
 
-    alice "A page... it lists four constellations in a specific order: 1. Libra, 2. Draco, 3. Aries, and 4. Leo. This must be the sequence Aura mentioned."
+    call screen astronomy_page_reveal_screen
 
     hide overlay_astronomy_page with dissolve
     play sound "audio/scene4/sfx_space_fold.mp3"
