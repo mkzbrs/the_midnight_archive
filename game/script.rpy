@@ -519,7 +519,6 @@ label puzzle_1:
         
         jump scene_04
     else:
- #       play sound "audio/scene3/sfx_reality_ripple.mp3"
         with hpunch
         alice "Hurm... that's wrong I think. Technology? Evolution? What is the true order?"
         aura "I don't know, what's your idea?"
