@@ -86,17 +86,17 @@ The game is built with a simple, clean simulation interface.
 ### Phase 2: Basic Prototype (Due Weeks 8-10)
 - [x] Code the starting scene (Alice waking up at 00:00).
 - [x] Add the first introductory dialogue with Aura.
-- [ ] Build the interactive fast-travel map (Courtyard, Cafe, Playground).
-- [ ] Create the first working interaction (finding a clue on the ground).
-- [ ] Code the loop system so the game successfully resets upon failure.
+- [x] Build the interactive fast-travel map (Courtyard, Cafe, Playground).
+- [x] Create the first working interaction (finding a clue on the ground).
+- [x] Code the loop system so the game successfully resets upon failure.
 - [x] Submit Progress Report and present the working prototype.
 
 ### Phase 3: Final Game & Evaluation (Due Weeks 13-14)
-- [ ] Add all remaining puzzles (Constellation, History, Timeline).
-- [ ] Code the final ending (fixing the "Lost Record" book).
-- [ ] Conduct formal user testing.
-- [ ] Write the Final Article Report with screenshots and test results.
-- [ ] Final Project Presentation.
+- [x] Add all remaining puzzles (Constellation, History, Timeline).
+- [x] Code the final ending (fixing the "Lost Record" book).
+- [x] Conduct formal user testing.
+- [x] Write the Final Article Report with screenshots and test results.
+- [x] Final Project Presentation.
 
 ---
 
